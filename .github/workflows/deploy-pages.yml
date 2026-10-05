@@ -24,10 +24,11 @@ jobs:
           bun-version-file: .tool-versions
       - run: bun install --frozen-lockfile
       - run: bun run test
+      - id: pages
+        uses: actions/configure-pages@v5
       - run: bun run build
         env:
-          VITE_BASE_URL: /${{ github.event.repository.name }}/
-      - uses: actions/configure-pages@v5
+          VITE_BASE_URL: ${{ steps.pages.outputs.base_path }}/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
