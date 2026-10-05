@@ -1,0 +1,24 @@
+{
+  "name": "fedramp-document-viewer",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5174 --strictPort",
+    "build": "vite build",
+    "preview": "vite preview",
+    "sync": "node scripts/sync-public.js && node scripts/sync-control-titles.js",
+    "sync:clean": "node scripts/sync-public.js --clean && node scripts/sync-control-titles.js",
+    "sync:titles": "node scripts/sync-control-titles.js",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:all": "bun run test && bun run test:e2e"
+  },
+  "dependencies": {
+    "marked": "^4.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "vite": "^5.4.21",
+    "vitest": "^4.1.10"
+  }
+}

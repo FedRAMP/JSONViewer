@@ -1,0 +1,207 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1f2937;
+  background: #f3f4f6;
+}
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding-bottom: 48px;
+}
+.page-header {
+  background: #1a3a5c;
+  color: #fff;
+  padding: 24px 28px;
+}
+.page-header h1 {
+  margin: 0 0 4px;
+  font-size: 1.5rem;
+}
+.page-header .subtitle {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 0.85rem;
+}
+
+.top-section {
+  background: #fff;
+  margin: 16px 20px 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.top-section > summary {
+  padding: 12px 16px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  background: #f9fafb;
+  border-bottom: 1px solid transparent;
+}
+.top-section[open] > summary { border-bottom-color: #e5e7eb; }
+.top-section-body { padding: 14px 16px; }
+
+.item-details {
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.item-summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #f9fafb;
+  font-weight: 500;
+}
+.item-label { flex: 1; min-width: 0; }
+.item-status { display: flex; gap: 4px; flex-shrink: 0; }
+.item-body { padding: 12px; border-top: 1px solid #e5e7eb; }
+
+.sub-section { margin-top: 12px; }
+.item-body > .sub-section:first-child, .top-section-body > .sub-section:first-child { margin-top: 0; }
+.sub-label { font-weight: 600; font-size: 0.85rem; color: #4b5563; text-transform: uppercase; letter-spacing: 0.02em; padding: 2px 0; }
+.sub-body { margin-top: 4px; padding-left: 14px; border-left: 2px solid #e5e7eb; }
+
+.group-section {
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.group-summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #e8eef5;
+  color: #1a3a5c;
+  font-weight: 600;
+}
+.group-summary::before { margin-right: 0; }
+.group-code { font-family: ui-monospace, SFMono-Regular, monospace; }
+.group-name { flex: 1; min-width: 0; font-weight: 500; }
+.group-count {
+  margin-left: auto;
+  padding: 1px 9px;
+  border-radius: 10px;
+  background: #1a3a5c;
+  color: #fff;
+  font-size: 0.75rem;
+}
+.group-body { padding: 10px 10px 0; }
+
+/* Control guidance view */
+.guidance-body { padding: 16px 20px 0; }
+.control-part { margin-bottom: 10px; }
+.control-part .info-table th { width: 160px; }
+.part-label { font-weight: 600; font-size: 0.8rem; color: #1a3a5c; margin-bottom: 2px; }
+.rule-statement { margin-bottom: 10px; font-size: 0.9rem; }
+.rule-count {
+  padding: 1px 9px;
+  border-radius: 10px;
+  background: #e8eef5;
+  color: #1a3a5c;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.rule-text > .sub-body { background: #f8fafc; padding: 8px 12px; border-left-color: #93c5fd; }
+.rule-text .rule-statement:last-child { margin-bottom: 0; }
+.guidance-note { margin: 0 0 12px; color: #4b5563; font-size: 0.85rem; }
+.sdr-entry { margin-top: 10px; padding-top: 8px; border-top: 1px dashed #d1d5db; }
+.sdr-entry .item-details { margin-bottom: 4px; }
+.sdr-missing { margin: 8px 0 0; color: #9ca3af; font-size: 0.85rem; font-style: italic; }
+.rule-count-none { background: none; color: #9ca3af; font-weight: 400; }
+
+/* Shared disclosure styling for every collapsible level. */
+details > summary { list-style: none; cursor: pointer; user-select: none; }
+details > summary::-webkit-details-marker { display: none; }
+details > summary::before {
+  content: '▶';
+  display: inline-block;
+  flex-shrink: 0;
+  margin-right: 8px;
+  font-size: 0.65rem;
+  color: #6b7280;
+  transition: transform 0.1s;
+}
+details[open] > summary::before { transform: rotate(90deg); }
+.item-summary::before { margin-right: 0; }
+
+.force-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border: 1px solid;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  background: #fff;
+}
+.force-must { color: #1a3a5c; border-color: #1a3a5c; }
+.force-should { color: #1d4ed8; border-color: #93c5fd; }
+.force-may { color: #4b5563; border-color: #d1d5db; }
+.force-not { color: #9a3412; border-color: #fdba74; }
+.item-status { align-items: center; }
+
+.status-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.status-yes { background: #d1fae5; color: #065f46; }
+.status-partial { background: #fef3c7; color: #92400e; }
+.status-no { background: #fee2e2; color: #991b1b; }
+.status-other { background: #e5e7eb; color: #374151; }
+
+.info-table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+.info-table th, .info-table td { text-align: left; padding: 4px 8px 4px 0; vertical-align: top; font-size: 0.9rem; }
+.info-table th { color: #6b7280; font-weight: 500; width: 220px; white-space: nowrap; }
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  color: #fff;
+}
+
+.enum-value {
+  display: inline-block;
+  padding: 1px 8px;
+  border-left: 4px solid #9ca3af;
+  background: #f9fafb;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.85rem;
+}
+.enum-title { color: #4b5563; font-size: 0.85rem; margin-left: 6px; }
+
+.bullet-list { margin: 4px 0; padding-left: 20px; }
+.bullet-list li { margin-bottom: 2px; }
+
+.markdown-body :first-child { margin-top: 0; }
+.markdown-body :last-child { margin-bottom: 0; }
+.markdown-body pre { background: #1e293b; color: #e2e8f0; padding: 8px 10px; border-radius: 4px; overflow-x: auto; font-size: 0.85rem; }
+.markdown-body code { background: #eef2f7; padding: 1px 4px; border-radius: 3px; font-size: 0.9em; }
+.markdown-body pre code { background: none; padding: 0; }
+
+.empty-note { padding: 24px; text-align: center; color: #6b7280; font-style: italic; }
+
+@media print {
+  body { background: #fff; }
+  .top-section, .item-details { break-inside: avoid; }
+  .status-badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  details { display: block !important; }
+  summary::before { display: none !important; }
+  .page-header {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

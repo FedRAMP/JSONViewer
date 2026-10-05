@@ -1,0 +1,24 @@
+{
+  "serviceDescription": "Compass FedRAMP Advisory Group helps Cloud Service Providers navigate FedRAMP 20x certification, from initial readiness assessment through Key Security Indicator implementation and Trust Center publication. We specialize in guiding SaaS providers new to the federal market through their first certification.",
+  "contactInformation": [
+    "advisory@compassfedramp.example.com",
+    "202-555-0199 (main line)"
+  ],
+  "servicesOffered": [
+    {
+      "serviceName": "FedRAMP 20x Readiness Assessment",
+      "serviceDescription": "Gap analysis against applicable FedRAMP Requirements and Key Security Indicators, with a prioritized remediation roadmap."
+    },
+    {
+      "serviceName": "Certification Package Preparation",
+      "serviceDescription": "Hands-on support authoring the Certification Package Overview and Security Decision Record, including KSI implementation, validation, and assessment statements."
+    },
+    {
+      "serviceName": "Trust Center Implementation",
+      "serviceDescription": "Guidance on standing up a self-service Trust Center meeting the CDS-TRC rule family requirements for programmatic and human-readable access."
+    }
+  ],
+  "customerReferences": [
+    "\"Compass helped us go from zero FedRAMP experience to a published Certification Package Overview in under four months.\" — VP of Engineering, mid-size SaaS provider"
+  ]
+}

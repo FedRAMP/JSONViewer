@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>FedRAMP Document Viewer</title>
+  <link rel="stylesheet" href="/src/app.css"/>
+</head>
+<body>
+  <nav class="toolbar">
+    <span class="brand">FedRAMP Document Viewer</span>
+    <div class="view-toggle" role="group" aria-label="View">
+      <button id="view-document" type="button" class="toggle active" aria-pressed="true">Document</button>
+      <button id="view-guidance" type="button" class="toggle" aria-pressed="false" disabled>Control Guidance</button>
+    </div>
+    <input id="file-input" type="file" accept=".json,application/json" hidden/>
+    <span id="document-controls" class="toolbar-group">
+      <button id="open-btn" type="button" class="btn btn-primary" disabled>Open JSON File</button>
+      <label class="schema-label" for="schema-select">Document type</label>
+      <select id="schema-select" disabled></select>
+    </span>
+    <button id="expand-btn" type="button" class="btn btn-outline" disabled>Expand all</button>
+    <button id="collapse-btn" type="button" class="btn btn-outline" disabled>Collapse all</button>
+    <span id="file-name" class="file-name"></span>
+  </nav>
+  <main id="main">
+    <div id="status" class="status">Loading schemas…</div>
+    <div id="drop-hint" class="drop-hint" hidden>
+      <p><strong>Open a FedRAMP JSON file</strong> to view it as a formatted document.</p>
+      <p class="muted">Use the <em>Open JSON File</em> button or drag and drop a file anywhere on this page.
+        The document type is detected automatically; change it with the dropdown if the guess is wrong.</p>
+    </div>
+    <!-- Empty sandbox blocks all scripting: the rendered HTML comes from an
+         untrusted, user-supplied JSON file. -->
+    <iframe id="preview" title="Document preview" data-testid="html-preview-iframe" sandbox="" hidden></iframe>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

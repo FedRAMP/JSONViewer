@@ -1,0 +1,348 @@
+{
+  "certificationPackageOverviewUri": "https://meridianfed.com/fedramp/mocp/certification-package-overview.json",
+  "portsAndProtocols": [
+    {
+      "serviceName": "Web Application (HTTPS)",
+      "portNumber": "443",
+      "transportProtocol": "TCP",
+      "encryption": "TLS 1.3",
+      "purpose": "Tenant and administrator web access to the MeridianOps Cloud Platform application."
+    },
+    {
+      "serviceName": "PostgreSQL Replica Sync",
+      "portNumber": "5432",
+      "transportProtocol": "TCP",
+      "encryption": "TLS 1.2",
+      "purpose": "Internal, VPC-only replication traffic between primary and read-replica database instances."
+    },
+    {
+      "serviceName": "SFTP Batch Ingest",
+      "portNumber": "22",
+      "transportProtocol": "TCP",
+      "encryption": "SSH",
+      "purpose": "Nightly bulk grant-data file transfers from agency legacy systems; restricted to allowlisted agency egress IPs."
+    }
+  ],
+  "securityControls": [
+    {
+      "controlId": "AC-02",
+      "controlImplementationStatus": "Implemented",
+      "controlImplementationDescription": "Account provisioning and deprovisioning is automated through the identity provider (Okta) with SCIM sync to MOCP; disabled accounts are removed from all systems within 1 hour via automated workflow.",
+      "parameterValues": [
+        { "parameterId": "ac-02_prm_1", "parameterValue": "24 hours" }
+      ]
+    },
+    {
+      "controlId": "AC-06",
+      "controlImplementationStatus": "Implemented",
+      "controlImplementationDescription": "Role-based access control enforces least privilege across all tenant and administrative roles; privileged access requires just-in-time elevation with automatic 8-hour expiry."
+    },
+    {
+      "controlId": "AU-02",
+      "controlImplementationStatus": "Implemented",
+      "controlImplementationDescription": "All authentication events, administrative actions, and data access to CUI are logged to the centralized SIEM with 1-year hot retention and 3-year cold storage."
+    },
+    {
+      "controlId": "IA-02",
+      "controlImplementationStatus": "Implemented",
+      "controlImplementationDescription": "All human users authenticate via phishing-resistant MFA (FIDO2/WebAuthn) enforced at the identity provider; password-only authentication is disabled tenant-wide."
+    },
+    {
+      "controlId": "SC-07",
+      "controlImplementationStatus": "Implemented",
+      "controlImplementationDescription": "Network boundaries are enforced via AWS security groups and NACLs with default-deny inbound rules; a WAF inspects all inbound HTTPS traffic to the application tier."
+    },
+    {
+      "controlId": "SC-13",
+      "controlImplementationStatus": "Implemented",
+      "controlImplementationDescription": "Data at rest is encrypted using AES-256 (AWS KMS-managed keys); data in transit uses TLS 1.2 or higher exclusively."
+    },
+    {
+      "controlId": "CM-06",
+      "controlImplementationStatus": "Partially Implemented",
+      "controlImplementationDescription": "Baseline configurations are defined in Terraform and enforced via CI/CD for all production infrastructure; a small set of legacy batch-processing hosts are being migrated to the same pipeline, targeted for completion Q4 2026."
+    },
+    {
+      "controlId": "RA-05",
+      "controlImplementationStatus": "Implemented",
+      "controlImplementationDescription": "Authenticated vulnerability scans run weekly against all production hosts and containers; findings are tracked to remediation in the security backlog per internal SLAs."
+    },
+    {
+      "controlId": "CP-09",
+      "controlImplementationStatus": "Implemented",
+      "controlImplementationDescription": "Automated daily database snapshots are retained for 35 days and replicated cross-region; quarterly restoration tests validate recovery point and time objectives."
+    },
+    {
+      "controlId": "SI-04",
+      "controlImplementationStatus": "Implemented",
+      "controlImplementationDescription": "A managed SIEM/SOAR platform continuously correlates log sources across the environment and generates alerts routed to the 24/7 security operations rotation."
+    }
+  ],
+  "fedRampRequirements": [
+    {
+      "frrID": "SDR-CSO-MTD",
+      "frrImplementationStatus": "Implemented",
+      "frrImplementation": ["This Security Decision Record is published and versioned alongside the MOCP Certification Package Overview, with metadata (schema version, publication date, package ID) embedded at the top of each machine-readable document."],
+      "frrValidation": ["Metadata fields are validated against the published FedRAMP JSON Schemas as part of the CI publication pipeline before any document is made public."],
+      "frrAssessment": ["The independent assessor confirmed all published SDR metadata fields are complete and internally consistent with the Certification Package Overview during the 2026 assessment cycle."]
+    },
+    {
+      "frrID": "CDS-CSO-PUB",
+      "frrImplementationStatus": "Implemented",
+      "frrImplementation": ["All FedRAMP-required public information (Certification Package Overview, Trust Center contents, secure configuration guidance) is published at https://trust.meridianfed.com/mocp without authentication requirements."],
+      "frrValidation": ["A quarterly internal audit confirms public documentation URLs remain reachable and current."],
+      "frrAssessment": []
+    },
+    {
+      "frrID": "CDS-CSO-FID",
+      "frrImplementationStatus": "Implemented",
+      "frrImplementation": ["The FedRAMP ID (FR2026-MOCP-001) is included in the Certification Package Overview, the public Trust Center landing page, and the FedRAMP Marketplace listing."],
+      "frrValidation": [],
+      "frrAssessment": []
+    },
+    {
+      "frrID": "CDS-CSO-UTC",
+      "frrImplementationStatus": "Implemented",
+      "frrImplementation": ["A self-service Trust Center at trust.meridianfed.com/mocp hosts all certification data, ongoing certification reports, and vulnerability activity feeds for authorized agency reviewers."],
+      "frrValidation": ["Agency access requests are logged and reviewed monthly to confirm only authorized federal personnel have been granted access."],
+      "frrAssessment": []
+    },
+    {
+      "frrID": "AFC-CSO-INB",
+      "frrImplementationStatus": "Implemented",
+      "frrImplementation": ["A monitored security inbox (security@meridianfed.com) receives and routes all FedRAMP correspondence to the compliance team, with acknowledgment of receipt within one business day."],
+      "frrValidation": ["Inbox monitoring and routing rules are tested quarterly by sending a test message and confirming automated acknowledgment."],
+      "frrAssessment": []
+    },
+    {
+      "frrID": "SCN-CSO-EVA",
+      "frrImplementationStatus": "Implemented",
+      "frrImplementation": ["All proposed changes are evaluated against the Adaptive/Transformative criteria during the weekly change advisory board meeting before implementation."],
+      "frrValidation": ["Change evaluation decisions and rationale are recorded in the change management system for audit."],
+      "frrAssessment": []
+    },
+    {
+      "frrID": "VER-RPT-VDT",
+      "frrImplementationStatus": "Implemented",
+      "frrImplementation": ["Vulnerability Detail Reports are generated monthly from the vulnerability management platform and published to the Trust Center per VER-RPT-VDT."],
+      "frrValidation": ["Report contents are cross-checked against the vulnerability scanner's raw findings export prior to publication."],
+      "frrAssessment": []
+    },
+    {
+      "frrID": "VER-RPT-AVI",
+      "frrImplementationStatus": "Implemented",
+      "frrImplementation": ["Accepted vulnerabilities are tracked with documented acceptance rationale and reported monthly alongside the Vulnerability Detail Report."],
+      "frrValidation": [],
+      "frrAssessment": []
+    },
+    {
+      "frrID": "VER-RPT-PER",
+      "frrImplementationStatus": "Implemented",
+      "frrImplementation": ["Vulnerability reporting occurs on a persistent monthly cadence covering all activity since the previous report, with no gaps."],
+      "frrValidation": [],
+      "frrAssessment": []
+    },
+    {
+      "frrID": "CCM-OCR-AVL",
+      "frrImplementationStatus": "Implemented",
+      "frrImplementation": ["Ongoing Certification Reports are published to the Trust Center quarterly, within 5 business days of the close of each reporting period."],
+      "frrValidation": ["Publication dates are tracked against the committed schedule in the compliance calendar."],
+      "frrAssessment": []
+    },
+    {
+      "frrID": "IEC-CSO-EFR",
+      "frrImplementationStatus": "Implemented",
+      "frrImplementation": ["Every confirmed security incident is evaluated against FedRAMP reportability criteria within 4 hours of triage by the on-call incident commander."],
+      "frrValidation": ["Reportability determinations are documented in the incident ticket for later audit."],
+      "frrAssessment": []
+    },
+    {
+      "frrID": "MAS-CSO-IIR",
+      "frrImplementationStatus": "Implemented",
+      "frrImplementation": ["All information resources within the Minimum Assessment Scope are inventoried in the asset management system, tagged by data flow and security category."],
+      "frrValidation": [],
+      "frrAssessment": []
+    },
+    {
+      "frrID": "CMU-CSO-CMD",
+      "frrImplementationStatus": "Implemented",
+      "frrImplementation": ["Cryptographic modules in use (AWS KMS, OpenSSL 3.x FIPS module) are documented with validation certificate references in the system security documentation."],
+      "frrValidation": [],
+      "frrAssessment": []
+    },
+    {
+      "frrID": "SDR-CSX-KSI",
+      "frrImplementationStatus": "Implemented",
+      "frrImplementation": ["Key Security Indicators applicable to this Certification Class are documented below with implementation, validation, and assessment statements for each."],
+      "frrValidation": [],
+      "frrAssessment": []
+    }
+  ],
+  "keySecurityIndicators": [
+    {
+      "ksiId": "KSI-CED-RAT",
+      "ksiImplementationStatus": "Implemented",
+      "ksiImplementation": ["All personnel with system access complete annual security awareness training; completion records are tracked in the HR learning management system."],
+      "ksiValidation": ["Training completion is reviewed quarterly against the current employee roster to identify and remediate gaps."],
+      "ksiAssessment": ["The independent assessor sampled 15 employee training records and confirmed 100% completion within required timeframes."],
+      "ksiTests": ["Quarterly training-completion reconciliation against active employee roster"],
+      "ksiEvidence": [
+        { "evidenceType": "Report", "evidenceDescription": "Q2 2026 training completion report", "evidenceLocation": "https://trust.meridianfed.com/mocp/evidence/training-q2-2026.pdf", "lastUpdated": "2026-06-30" }
+      ]
+    },
+    {
+      "ksiId": "KSI-CMT-LMC",
+      "ksiImplementationStatus": "Implemented",
+      "ksiImplementation": ["All infrastructure and application changes are logged automatically through the CI/CD pipeline and AWS CloudTrail, capturing who, what, and when for every deployment."],
+      "ksiValidation": ["Change logs are reconciled weekly against the change advisory board's approved change list."],
+      "ksiAssessment": ["Assessor confirmed change logs for a sample of 20 production deployments matched approved change records with no discrepancies."],
+      "ksiTests": ["Weekly change-log-to-approval reconciliation"],
+      "ksiEvidence": [
+        { "evidenceType": "Log", "evidenceDescription": "Sample CloudTrail change log export", "evidenceText": "2026-06-14T09:12:03Z user=deploy-bot action=UpdateService service=grants-api version=2.14.3 approvedChangeId=CHG-04821" }
+      ]
+    },
+    {
+      "ksiId": "KSI-CMT-VTD",
+      "ksiImplementationStatus": "Implemented",
+      "ksiImplementation": ["Automated integration and smoke tests run against every deployment before traffic is shifted to the new version via blue/green deployment."],
+      "ksiValidation": ["Deployment pipeline test results are archived and reviewed monthly for trend analysis."],
+      "ksiAssessment": [],
+      "ksiTests": ["Post-deployment smoke test suite (automated, every deploy)"],
+      "ksiEvidence": [
+        { "evidenceType": "Log", "evidenceDescription": "CI pipeline run summary showing passing smoke tests", "evidenceLocation": "https://trust.meridianfed.com/mocp/evidence/ci-run-48213.json", "lastUpdated": "2026-06-20" }
+      ]
+    },
+    {
+      "ksiId": "KSI-CNA-MAT",
+      "ksiImplementationStatus": "Implemented",
+      "ksiImplementation": ["Container images are built from minimal base images with unnecessary packages and services removed; attack surface is reviewed as part of the quarterly architecture review."],
+      "ksiValidation": ["Automated container image scanning flags any newly introduced unnecessary packages or open ports before deployment."],
+      "ksiAssessment": ["Assessor reviewed a sample of container image manifests and confirmed minimal footprint."],
+      "ksiTests": ["Automated image scan on every container build"],
+      "ksiEvidence": [
+        { "evidenceType": "Configuration", "evidenceDescription": "Trivy scan summary for grants-api image v2.14.3", "evidenceText": "0 CRITICAL, 0 HIGH, 2 MEDIUM (accepted), 5 LOW vulnerabilities detected" }
+      ]
+    },
+    {
+      "ksiId": "KSI-CNA-RNT",
+      "ksiImplementationStatus": "Implemented",
+      "ksiImplementation": ["Network traffic between services is restricted using AWS security groups and a service mesh enforcing mutual TLS and explicit allow-listed service-to-service communication paths."],
+      "ksiValidation": ["Network flow logs are reviewed monthly to confirm no unexpected traffic paths have emerged."],
+      "ksiAssessment": [],
+      "ksiTests": ["Monthly VPC flow log review"],
+      "ksiEvidence": [
+        { "evidenceType": "Configuration", "evidenceDescription": "Security group and service mesh policy export", "evidenceLocation": "https://trust.meridianfed.com/mocp/evidence/network-policy-2026-06.json", "lastUpdated": "2026-06-01" }
+      ]
+    },
+    {
+      "ksiId": "KSI-IAM-ELP",
+      "ksiImplementationStatus": "Implemented",
+      "ksiImplementation": ["Access is granted strictly on a least-privilege basis via predefined IAM roles mapped to job function; no standing administrative access exists for routine operations."],
+      "ksiValidation": ["Quarterly access reviews confirm each user's granted permissions match their current role."],
+      "ksiAssessment": ["Assessor sampled 25 user accounts and confirmed permissions were consistent with least-privilege role assignments."],
+      "ksiTests": ["Quarterly access entitlement review"],
+      "ksiEvidence": [
+        { "evidenceType": "Report", "evidenceDescription": "Q2 2026 access review attestation", "evidenceLocation": "https://trust.meridianfed.com/mocp/evidence/access-review-q2-2026.pdf", "lastUpdated": "2026-06-28" }
+      ]
+    },
+    {
+      "ksiId": "KSI-IAM-JIT",
+      "ksiImplementationStatus": "Implemented",
+      "ksiImplementation": ["Elevated administrative access requires just-in-time approval through the PAM system, automatically expiring after 8 hours and requiring re-justification for renewal."],
+      "ksiValidation": ["PAM session logs are reviewed weekly to confirm all elevated sessions were justified and time-bound."],
+      "ksiAssessment": [],
+      "ksiTests": ["Weekly PAM session log review"],
+      "ksiEvidence": [
+        { "evidenceType": "Log", "evidenceDescription": "Sample PAM elevation request and expiry log", "evidenceText": "2026-06-11 14:02 user=jsmith role=db-admin justification=\"incident INC-2214 investigation\" expires=2026-06-11T22:02Z" }
+      ]
+    },
+    {
+      "ksiId": "KSI-INR-RIR",
+      "ksiImplementationStatus": "Implemented",
+      "ksiImplementation": ["The incident response plan is reviewed and updated annually, and after every incident retrospective, to incorporate lessons learned."],
+      "ksiValidation": ["Plan revision history is tracked in version control with review sign-off from the security lead."],
+      "ksiAssessment": [],
+      "ksiTests": ["Annual IR plan tabletop exercise"],
+      "ksiEvidence": [
+        { "evidenceType": "Report", "evidenceDescription": "2026 tabletop exercise after-action report", "evidenceLocation": "https://trust.meridianfed.com/mocp/evidence/ir-tabletop-2026.pdf", "lastUpdated": "2026-04-10" }
+      ]
+    },
+    {
+      "ksiId": "KSI-MLA-OSM",
+      "ksiImplementationStatus": "Implemented",
+      "ksiImplementation": ["A managed SIEM aggregates logs from all production systems, cloud infrastructure, and identity providers, providing 24/7 correlation and alerting."],
+      "ksiValidation": ["SIEM alert coverage and log source health are reviewed weekly by the security operations team."],
+      "ksiAssessment": ["Assessor confirmed the SIEM ingests logs from all in-scope systems per the documented log source inventory."],
+      "ksiTests": ["Weekly SIEM log source health check"],
+      "ksiEvidence": [
+        { "evidenceType": "Configuration", "evidenceDescription": "SIEM log source inventory export", "evidenceLocation": "https://trust.meridianfed.com/mocp/evidence/siem-sources-2026-06.json", "lastUpdated": "2026-06-01" }
+      ]
+    },
+    {
+      "ksiId": "KSI-MLA-RVL",
+      "ksiImplementationStatus": "Implemented",
+      "ksiImplementation": ["Security-relevant logs are reviewed daily by the security operations team through automated dashboards, with manual deep-dive review triggered by anomaly alerts."],
+      "ksiValidation": [],
+      "ksiAssessment": [],
+      "ksiTests": ["Daily automated log review dashboard check"],
+      "ksiEvidence": [
+        { "evidenceType": "Screenshot", "evidenceDescription": "SOC dashboard daily review checklist", "evidenceLocation": "https://trust.meridianfed.com/mocp/evidence/soc-dashboard-2026-06-14.png", "lastUpdated": "2026-06-14" }
+      ]
+    },
+    {
+      "ksiId": "KSI-PIY-GIV",
+      "ksiImplementationStatus": "Implemented",
+      "ksiImplementation": ["An automated asset inventory tool continuously discovers and catalogs all cloud resources, reconciled against the authorized boundary weekly."],
+      "ksiValidation": ["Inventory reconciliation reports are reviewed weekly for unauthorized or orphaned resources."],
+      "ksiAssessment": [],
+      "ksiTests": ["Weekly asset inventory reconciliation"],
+      "ksiEvidence": [
+        { "evidenceType": "Report", "evidenceDescription": "Weekly asset inventory reconciliation report", "evidenceLocation": "https://trust.meridianfed.com/mocp/evidence/inventory-2026-06-14.csv", "lastUpdated": "2026-06-14" }
+      ]
+    },
+    {
+      "ksiId": "KSI-RPL-ABO",
+      "ksiImplementationStatus": "Implemented",
+      "ksiImplementation": ["Backup frequency and retention (daily snapshots, 35-day retention, cross-region replication) are aligned with the documented recovery point objective of 24 hours."],
+      "ksiValidation": ["Backup completion and retention compliance are verified automatically each night with alerting on failure."],
+      "ksiAssessment": ["Assessor confirmed backup configuration matches the documented RPO/RTO objectives during the 2026 assessment."],
+      "ksiTests": ["Nightly automated backup success verification"],
+      "ksiEvidence": [
+        { "evidenceType": "Log", "evidenceDescription": "Backup job success log for June 2026", "evidenceLocation": "https://trust.meridianfed.com/mocp/evidence/backup-log-2026-06.json", "lastUpdated": "2026-07-01" }
+      ]
+    },
+    {
+      "ksiId": "KSI-SCR-MON",
+      "ksiImplementationStatus": "Partially Implemented",
+      "ksiImplementation": ["Direct software dependencies are continuously monitored for known vulnerabilities via automated software composition analysis; extension to transitive third-party service dependencies is in progress, targeted for completion Q3 2026."],
+      "ksiValidation": ["SCA scan results are reviewed weekly and tracked to remediation."],
+      "ksiAssessment": [],
+      "ksiTests": ["Weekly software composition analysis scan"],
+      "ksiEvidence": [
+        { "evidenceType": "Report", "evidenceDescription": "SCA scan summary for June 2026", "evidenceLocation": "https://trust.meridianfed.com/mocp/evidence/sca-2026-06.json", "lastUpdated": "2026-06-30" }
+      ]
+    },
+    {
+      "ksiId": "KSI-SVC-ASM",
+      "ksiImplementationStatus": "Implemented",
+      "ksiImplementation": ["All application secrets are stored in AWS Secrets Manager with automatic rotation every 90 days; no secrets are stored in source control or configuration files."],
+      "ksiValidation": ["Automated secret scanning runs on every commit to prevent accidental secret exposure."],
+      "ksiAssessment": ["Assessor confirmed no hardcoded secrets were found in a full repository scan."],
+      "ksiTests": ["Pre-commit and CI secret scanning on every push"],
+      "ksiEvidence": [
+        { "evidenceType": "Log", "evidenceDescription": "Secret rotation audit log for Q2 2026", "evidenceLocation": "https://trust.meridianfed.com/mocp/evidence/secret-rotation-q2-2026.json", "lastUpdated": "2026-06-30" }
+      ]
+    },
+    {
+      "ksiId": "KSI-SVC-SIN",
+      "ksiImplementationStatus": "Implemented",
+      "ksiImplementation": ["Tenant data is logically isolated using per-tenant database schemas and row-level security policies, encrypted at rest with tenant-specific KMS key grants."],
+      "ksiValidation": ["Tenant isolation is validated through automated cross-tenant access negative testing in the CI pipeline."],
+      "ksiAssessment": ["Assessor's penetration test confirmed no cross-tenant data access was possible."],
+      "ksiTests": ["Automated cross-tenant isolation negative test suite (CI, every deploy)"],
+      "ksiEvidence": [
+        { "evidenceType": "Report", "evidenceDescription": "Penetration test report excerpt: tenant isolation findings", "evidenceLocation": "https://trust.meridianfed.com/mocp/evidence/pentest-2026-tenant-isolation.pdf", "lastUpdated": "2026-05-15" }
+      ]
+    }
+  ]
+}
