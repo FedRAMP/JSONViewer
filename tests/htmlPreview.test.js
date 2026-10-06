@@ -27,7 +27,7 @@ describe('buildPreviewHtml', () => {
     };
     const html = buildPreviewHtml(schema, { frrID: 'KSI-CNA-01' }, { generatedAt: FIXED_DATE });
     expect(html).toContain('KSI-CNA-01');
-    expect(html).toContain('<span class="enum-title">Cloud Native Architecture</span>');
+    expect(html).toContain('<span class="enum-title">(Cloud Native Architecture)</span>');
     expect(html).not.toContain('KSI-CNA-01 – Cloud Native Architecture');
 
     const emptyHtml = buildPreviewHtml(schema, { frrID: '' }, { generatedAt: FIXED_DATE });

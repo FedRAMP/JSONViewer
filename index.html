@@ -10,14 +10,23 @@
   <nav class="toolbar">
     <span class="brand">FedRAMP Document Viewer</span>
     <div class="view-toggle" role="group" aria-label="View">
-      <button id="view-document" type="button" class="toggle active" aria-pressed="true">Document</button>
-      <button id="view-guidance" type="button" class="toggle" aria-pressed="false" disabled>Control Guidance</button>
+      <button id="view-document" type="button" class="toggle active" aria-pressed="true">FedRAMP</button>
+      <button id="view-guidance" type="button" class="toggle" aria-pressed="false" disabled>Agency</button>
     </div>
     <input id="file-input" type="file" accept=".json,application/json" hidden/>
     <span id="document-controls" class="toolbar-group">
       <button id="open-btn" type="button" class="btn btn-primary" disabled>Open JSON File</button>
       <label class="schema-label" for="schema-select">Document type</label>
       <select id="schema-select" disabled></select>
+    </span>
+    <span id="guidance-controls" class="toolbar-group" hidden>
+      <label class="schema-label" for="baseline-select">Baseline</label>
+      <select id="baseline-select">
+        <option value="">All</option>
+        <option value="b">Low</option>
+        <option value="c">Moderate</option>
+        <option value="d">High</option>
+      </select>
     </span>
     <button id="expand-btn" type="button" class="btn btn-outline" disabled>Expand all</button>
     <button id="collapse-btn" type="button" class="btn btn-outline" disabled>Collapse all</button>

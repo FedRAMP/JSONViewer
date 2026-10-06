@@ -1,10 +1,8 @@
 # FedRAMP Document Viewer
 
-A small, read-only web app that opens a FedRAMP 20x JSON file (SDR, COP, Ongoing Certification Report, Incident Report, and the rest of the [fedramp/schemas](https://github.com/fedramp/schemas) catalog — see `src/config.js`) and renders it as a formatted, human-readable document. For creating or editing documents, use the separate [editor](../editor/) app.
+A small, read-only web app that opens a FedRAMP 20x JSON file (SDR, COP, Ongoing Certification Report, Incident Report, and the rest of the [fedramp/schemas](https://github.com/fedramp/schemas) catalog — see `src/config.js`) and renders it as a formatted, human-readable document.
 
 ## Quick start
-
-All commands run from this `viewer/` directory.
 
 ```bash
 bun install
@@ -13,7 +11,7 @@ bun run dev        # http://localhost:5174
 
 Click **Open JSON File** (or drag a file onto the page). The document type is detected from the file's top-level keys; if the guess is wrong, pick the right one from the **Document type** dropdown and the page re-renders.
 
-Switch to **Control Guidance** in the toolbar to browse `public/AgencyControlGuidance.controls.merged.json`: every NIST control (grouped by family) with its agency actions, FedRAMP guidance, and notes per part, plus each FedRAMP requirement (FRR) and Key Security Indicator (KSI) that the FRMR rules map to that control, with its force and statement.
+Switch to **Agency** in the toolbar to browse `public/AgencyControlGuidance.controls.merged.json`: every NIST control (grouped by family) with its agency actions, FedRAMP guidance, and notes per part, plus each FedRAMP requirement (FRR) and Key Security Indicator (KSI) that the FRMR rules map to that control, with its force and statement.
 
 ## How it works
 

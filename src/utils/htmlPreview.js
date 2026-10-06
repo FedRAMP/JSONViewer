@@ -52,14 +52,18 @@ function stripValuePrefix(title, value) {
   return rest || title;
 }
 
-function renderEnum(prop, value) {
+// FRR and KSI IDs show their title in parentheses: "KSI-CED-RAT (Reviewing All Training)".
+const RULE_ID_KEYS = new Set(['frrID', 'frId', 'FR_ID', 'ksiId']);
+
+function renderEnum(prop, value, key) {
   const { enum: enumValues, enumNames } = prop;
   const hasNames = Array.isArray(enumNames) && enumNames.length === enumValues.length;
   const i = enumValues.indexOf(value);
   const title = hasNames && i > 0 ? stripValuePrefix(enumNames[i], value) : null;
   const badge = `<span class="enum-value" style="border-left-color:${colorForCategory(value)}">${esc(value)}</span>`;
   if (title && title !== value) {
-    return `${badge}<span class="enum-title">${esc(title)}</span>`;
+    const text = RULE_ID_KEYS.has(key) ? `(${title})` : title;
+    return `${badge}<span class="enum-title">${esc(text)}</span>`;
   }
   return badge;
 }
@@ -165,7 +169,7 @@ function itemLabel(items, item) {
       const { enum: enumValues, enumNames } = rawChild;
       const hasNames = Array.isArray(enumNames) && enumNames.length === enumValues.length;
       const i = enumValues.indexOf(v);
-      if (hasNames && i > 0 && enumNames[i] !== v) return { key, html: renderEnum(rawChild, v) };
+      if (hasNames && i > 0 && enumNames[i] !== v) return { key, html: renderEnum(rawChild, v, key) };
     }
   }
   for (const [key, rawChild] of props) {
@@ -299,7 +303,7 @@ function renderField(rawProp, value, root, key, depth) {
   const prop = resolveLocalRef(root, rawProp);
   if (!prop || isEmptyValue(value)) return null;
 
-  if (prop.enum) return renderEnum(prop, value);
+  if (prop.enum) return renderEnum(prop, value, key);
 
   switch (prop.type) {
     case 'object':

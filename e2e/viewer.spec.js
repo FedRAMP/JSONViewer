@@ -104,7 +104,7 @@ test('SDR requirements and KSIs are grouped into named families', async ({ page 
   await expect(frame.locator('.group-code', { hasText: /^KSI-CED$/ })).toBeVisible();
 
   // The control guidance view's embedded SDR cards don't repeat the rule text.
-  await page.getByRole('button', { name: 'Control Guidance' }).click();
+  await page.getByRole('button', { name: 'Agency' }).click();
   await expect(frame.locator('.sdr-entry').first()).toBeAttached();
   await expect(frame.locator('.sdr-entry .rule-text')).toHaveCount(0);
 });
@@ -120,7 +120,7 @@ test('reports invalid JSON without crashing', async ({ page }) => {
 test('Control Guidance view shows controls with their mapped KSIs/FRRs', async ({ page }) => {
   const errors = trackErrors(page);
   await ready(page);
-  await page.getByRole('button', { name: 'Control Guidance' }).click();
+  await page.getByRole('button', { name: 'Agency' }).click();
   await expect(page.locator('#document-controls')).toBeHidden();
 
   const frame = page.frameLocator('[data-testid="html-preview-iframe"]');
@@ -135,8 +135,11 @@ test('Control Guidance view shows controls with their mapped KSIs/FRRs', async (
   await expect(card.locator('.sub-label', { hasText: 'Mapped FedRAMP Rules' })).toBeVisible();
   await expect(card.locator('.enum-value', { hasText: 'KSI-CED-RAT' })).toBeVisible();
 
-  await page.getByRole('button', { name: 'Document' }).click();
+  await expect(page.locator('#guidance-controls')).toBeVisible();
+
+  await page.getByRole('button', { name: 'FedRAMP' }).click();
   await expect(page.locator('#document-controls')).toBeVisible();
+  await expect(page.locator('#guidance-controls')).toBeHidden();
   await expect(page.locator('#drop-hint')).toBeVisible();
   expect(errors).toEqual([]);
 });
@@ -146,7 +149,7 @@ test('Control Guidance embeds the loaded SDR entry under each mapped rule', asyn
   const sdr = SCHEMA_CATALOG[0];
   const sampleName = sdr.file.replace(/\.json$/, '.sample.json');
   await page.locator('#file-input').setInputFiles(path.join(SAMPLES_DIR, sampleName));
-  await page.getByRole('button', { name: 'Control Guidance' }).click();
+  await page.getByRole('button', { name: 'Agency' }).click();
 
   const frame = page.frameLocator('[data-testid="html-preview-iframe"]');
   await expect(frame.locator('.guidance-note')).toContainText(sampleName);
@@ -155,4 +158,31 @@ test('Control Guidance embeds the loaded SDR entry under each mapped rule', asyn
   const entry = card.locator('.sdr-entry').first();
   await expect(entry.locator('.part-label')).toHaveText(`In ${sampleName}`);
   await expect(entry.locator('.item-summary .status-badge')).toBeVisible();
+});
+
+test('Agency view filters controls by baseline', async ({ page }) => {
+  await ready(page);
+  await page.getByRole('button', { name: 'Agency' }).click();
+  const frame = page.frameLocator('[data-testid="html-preview-iframe"]');
+  const control = id => frame.locator('details.control-card > summary .enum-value', { hasText: new RegExp(`^${id.replace(/[()]/g, '\\$&')}$`) });
+  const cards = frame.locator('details.control-card');
+  await expect(control('AC-02 (01)')).toHaveCount(1);
+  const all = await cards.count();
+
+  const baseline = page.getByLabel('Baseline');
+  await baseline.selectOption({ label: 'Low' });
+  await expect(control('AC-02')).toHaveCount(1);
+  await expect(control('AC-02 (01)')).toHaveCount(0);
+  const low = await cards.count();
+  expect(low).toBeLessThan(all);
+
+  await baseline.selectOption({ label: 'Moderate' });
+  await expect(control('AC-02 (01)')).toHaveCount(1);
+  expect(await cards.count()).toBeGreaterThan(low);
+
+  await baseline.selectOption({ label: 'High' });
+  await expect(control('AC-02 (01)')).toHaveCount(1);
+
+  await baseline.selectOption({ label: 'All' });
+  await expect(cards).toHaveCount(all);
 });

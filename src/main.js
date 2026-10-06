@@ -22,6 +22,8 @@ const dropHint = document.getElementById('drop-hint');
 const preview = document.getElementById('preview');
 const main = document.getElementById('main');
 const documentControls = document.getElementById('document-controls');
+const guidanceControls = document.getElementById('guidance-controls');
+const baselineSelect = document.getElementById('baseline-select');
 const viewDocumentBtn = document.getElementById('view-document');
 const viewGuidanceBtn = document.getElementById('view-guidance');
 
@@ -40,6 +42,9 @@ let view = 'document'; // 'document' | 'guidance'
 let guidanceData = null;
 let controlRules = {};
 let controlTitles = {};
+// FRMR class -> Set of Rev 5 control IDs in its baseline; the Baseline
+// dropdown's values are the FedRAMP classes (b = Low, c = Moderate, d = High).
+let baselines = {};
 
 function showStatus(message, isError = false) {
   statusEl.textContent = message;
@@ -63,6 +68,7 @@ function setView(next) {
   viewGuidanceBtn.setAttribute('aria-pressed', String(view === 'guidance'));
   documentControls.hidden = view !== 'document';
   fileNameEl.hidden = view !== 'document';
+  guidanceControls.hidden = view !== 'guidance';
   render();
 }
 
@@ -93,6 +99,7 @@ function renderGuidance() {
     title: 'Agency Control Guidance',
     sdr,
     controlTitles,
+    controlFilter: baselines[baselineSelect.value] || null,
   }));
 }
 
@@ -131,7 +138,11 @@ async function init() {
   viewGuidanceBtn.disabled = !guidanceData;
   viewGuidanceBtn.title = guidanceData ? '' : `${GUIDANCE_URL} could not be loaded`;
   const requirements = frmrData ? extractFRMRRequirements(frmrData) : [];
-  const controls = frmrData ? extractNISTControls(extractRev5BaselineByClass(frmrData)) : [];
+  const baselineByClass = frmrData ? extractRev5BaselineByClass(frmrData) : {};
+  baselines = Object.fromEntries(Object.entries(baselineByClass)
+    .map(([cls, byFamily]) => [cls, new Set(Object.values(byFamily).flat())]));
+  for (const option of baselineSelect.options) option.disabled = Boolean(option.value) && !baselines[option.value];
+  const controls = extractNISTControls(baselineByClass);
   familyNames = frmrData ? extractFamilyNames(frmrData) : {};
   ruleForces = frmrData ? extractRuleForces(frmrData) : {};
   ruleTexts = frmrData ? extractRuleTexts(frmrData) : {};
@@ -193,6 +204,7 @@ viewDocumentBtn.addEventListener('click', () => setView('document'));
 viewGuidanceBtn.addEventListener('click', () => setView('guidance'));
 expandBtn.addEventListener('click', () => { expandMode = 'expanded'; render(); });
 collapseBtn.addEventListener('click', () => { expandMode = 'collapsed'; render(); });
+baselineSelect.addEventListener('change', render);
 
 // Drag-and-drop anywhere on the page. The iframe swallows drag events, so
 // disable its pointer events while a drag is in progress.

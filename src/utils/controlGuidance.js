@@ -102,7 +102,7 @@ function renderRule(rule, open, sdr) {
   const force = rule.force
     ? `<span class="force-badge ${forceClass(rule.force)}" title="Force of rule">${esc(rule.force)}</span>`
     : '';
-  const summary = `<span class="item-label">${idBadge(rule.id)}${rule.name ? `<span class="enum-title">${esc(rule.name)}</span>` : ''}</span>${force ? `<span class="item-status">${force}</span>` : ''}`;
+  const summary = `<span class="item-label">${idBadge(rule.id)}${rule.name ? `<span class="enum-title">(${esc(rule.name)})</span>` : ''}</span>${force ? `<span class="item-status">${force}</span>` : ''}`;
   const body = renderRuleText(rule) + renderSdrEntry(rule, sdr);
   if (!body) return `<div class="item-details item-leaf"><div class="item-summary">${summary}</div></div>`;
   return `<details class="item-details"${open}><summary class="item-summary">${summary}</summary><div class="item-body">${body}</div></details>`;
@@ -139,11 +139,13 @@ function renderControl(controlId, control, rules, attrs, sdr, titles) {
 export function buildControlGuidanceHtml(guidance, controlRules = {}, options = {}) {
   const title = options.title || 'Agency Control Guidance';
   // options.sdr: { label, cards } from buildItemCardIndex for the document
-  // open in the Document view, embedded under each mapped rule.
+  // open in the FedRAMP view, embedded under each mapped rule.
   const sdr = options.sdr || null;
   // options.controlTitles: { "AC-02": "Account Management", ... } from
   // public/nist-800-53-rev5-control-titles.json (bun run sync:titles).
   const controlTitles = options.controlTitles || {};
+  // options.controlFilter: Set of control IDs to show (a baseline); null = all.
+  const filter = options.controlFilter || null;
   const all = options.expanded ? ' open' : '';
   const attrs = {
     family: options.collapsed ? '' : ' open',
@@ -153,20 +155,21 @@ export function buildControlGuidanceHtml(guidance, controlRules = {}, options = 
   };
 
   const families = Object.entries(guidance?.controls || {}).map(([family, controls]) => {
-    const cards = Object.entries(controls || {})
+    const shown = Object.entries(controls || {}).filter(([id]) => !filter || filter.has(id));
+    const cards = shown
       .map(([id, control]) => renderControl(id, control, controlRules[id] || [], attrs, sdr, controlTitles))
       .join('');
     if (!cards) return '';
     const name = NIST_FAMILY_NAMES[family];
-    const count = Object.keys(controls).length;
+    const count = shown.length;
     return `<details class="group-section"${attrs.family}><summary class="group-summary"><span class="group-code">${esc(family)}</span>${name ? `<span class="group-name">${esc(name)}</span>` : ''}<span class="group-count">${count}</span></summary><div class="group-body">${cards}</div></details>`;
   }).join('');
 
   const banner = sdr
     ? `<p class="guidance-note">Mapped rules include their entries from <strong>${esc(sdr.label)}</strong>.</p>`
-    : '<p class="guidance-note">Open an SDR in the Document view to see its entry for each mapped rule here.</p>';
+    : '<p class="guidance-note">Open an SDR in the FedRAMP view to see its entry for each mapped rule here.</p>';
   const body = families
     ? `<div class="guidance-body">${banner}${families}</div>`
-    : '<p class="empty-note">No controls found in the guidance file.</p>';
+    : `<p class="empty-note">${filter ? 'No controls in the guidance file match this baseline.' : 'No controls found in the guidance file.'}</p>`;
   return wrapPage(title, body, options.generatedAt);
 }

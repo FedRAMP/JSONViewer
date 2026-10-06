@@ -94,7 +94,7 @@ describe('buildControlGuidanceHtml', () => {
 
   it('adds a mapped-rules subsection with each rule, its force, and markdown statement', () => {
     expect(html).toContain('Mapped FedRAMP Rules (1)');
-    expect(html).toContain('<span class="enum-title">Reviewing All Training</span>');
+    expect(html).toContain('<span class="enum-title">(Reviewing All Training)</span>');
     expect(html).toContain('<span class="force-badge force-must" title="Force of rule">MUST</span>');
     expect(html).toContain('<strong>Bold</strong> text');
     expect(html).toContain('<span class="rule-count">1 rule</span>');
@@ -131,7 +131,7 @@ describe('buildControlGuidanceHtml with an SDR', () => {
 
   it('prompts to open an SDR when none is loaded', () => {
     const html = buildControlGuidanceHtml(guidance, rules, { generatedAt: FIXED_DATE });
-    expect(html).toContain('Open an SDR in the Document view');
+    expect(html).toContain('Open an SDR in the FedRAMP view');
     expect(html).not.toContain('sdr-entry');
   });
 });
@@ -156,5 +156,30 @@ describe('control titles', () => {
     const real = readJson('nist-800-53-rev5-control-titles.json');
     const ids = Object.values(readJson('AgencyControlGuidance.controls.merged.json').controls).flatMap(f => Object.keys(f));
     expect(ids.filter(id => !real[id])).toEqual([]);
+  });
+});
+
+describe('buildControlGuidanceHtml controlFilter', () => {
+  const guidance = {
+    controls: {
+      AT: {
+        'AT-02': { parts: { _: { agency_actions: 'A', fedramp_guidance: 'G', notes: null } } },
+        'AT-03': { parts: { _: { agency_actions: 'B', fedramp_guidance: 'G', notes: null } } },
+      },
+      SI: { 'SI-05': { parts: { _: { agency_actions: 'C', fedramp_guidance: 'G', notes: null } } } },
+    },
+  };
+
+  it('shows only the filtered controls, recounts families and drops empty ones', () => {
+    const html = buildControlGuidanceHtml(guidance, {}, { generatedAt: FIXED_DATE, controlFilter: new Set(['AT-02']) });
+    expect(html).toContain('>AT-02<');
+    expect(html).not.toContain('>AT-03<');
+    expect(html).not.toContain('>SI-05<');
+    expect(html).toContain('<span class="group-count">1</span>');
+  });
+
+  it('says so when nothing matches', () => {
+    const html = buildControlGuidanceHtml(guidance, {}, { generatedAt: FIXED_DATE, controlFilter: new Set() });
+    expect(html).toContain('No controls in the guidance file match this baseline.');
   });
 });
