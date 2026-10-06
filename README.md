@@ -2,6 +2,9 @@
 
 A small, read-only web app that opens a FedRAMP 20x JSON file (SDR, COP, Ongoing Certification Report, Incident Report, and the rest of the [fedramp/schemas](https://github.com/fedramp/schemas) catalog — see `src/config.js`) and renders it as a formatted, human-readable document.
 
+> [!IMPORTANT]
+> **Disclaimer:** This is a reference implementation. It is not provided as an official FedRAMP tool. FedRAMP makes no warranty or assertion that this tool will be updated, fixed, enhanced, or continue to be hosted here.
+
 ## Quick start
 
 ```bash
@@ -33,3 +36,7 @@ bun run test         # Vitest unit tests (renderer, detection, $ref inlining, en
 bun run test:e2e     # Playwright (first run: bunx playwright install chromium)
 bun run test:all     # both
 ```
+
+## License
+
+This project is a work of the U.S. Government and is in the public domain within the United States. Worldwide rights are waived under [CC0 1.0 Universal](LICENSE.md).
