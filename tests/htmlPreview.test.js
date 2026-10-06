@@ -321,3 +321,17 @@ describe('buildItemCardIndex', () => {
     expect(buildItemCardIndex(schema, data, { expanded: true })['KSI-CED-RAT']).toMatch(/^<details class="item-details" open>/);
   });
 });
+
+describe('whitespace in string values', () => {
+  it('keeps line breaks and spacing in plain strings', () => {
+    const schema = { properties: { notes: { type: 'string' } } };
+    const html = buildPreviewHtml(schema, { notes: 'line one\n  indented <b>' }, { generatedAt: FIXED_DATE });
+    expect(html).toContain('<span class="text-value">line one\n  indented &lt;b&gt;</span>');
+  });
+
+  it('turns single newlines into <br> in markdown strings', () => {
+    const schema = { properties: { body: { type: 'string', description: 'May use Markdown for formatting.' } } };
+    const html = buildPreviewHtml(schema, { body: 'first\nsecond' }, { generatedAt: FIXED_DATE });
+    expect(html).toContain('first<br>second');
+  });
+});

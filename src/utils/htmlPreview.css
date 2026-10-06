@@ -186,6 +186,7 @@ details[open] > summary::before { transform: rotate(90deg); }
 .bullet-list { margin: 4px 0; padding-left: 20px; }
 .bullet-list li { margin-bottom: 2px; }
 
+.text-value { white-space: pre-wrap; }
 .markdown-body :first-child { margin-top: 0; }
 .markdown-body :last-child { margin-bottom: 0; }
 .markdown-body pre { background: #1e293b; color: #e2e8f0; padding: 8px 10px; border-radius: 4px; overflow-x: auto; font-size: 0.85rem; }

@@ -70,7 +70,7 @@ function renderEnum(prop, value, key) {
 
 function renderString(prop, value) {
   if (prop.description?.includes(MARKDOWN_MARKER)) {
-    return `<div class="markdown-body">${marked.parse(String(value))}</div>`;
+    return `<div class="markdown-body">${marked.parse(String(value), { breaks: true })}</div>`;
   }
   if (prop.format === 'uri') {
     return `<a href="${esc(value)}" target="_blank" rel="noopener">${esc(value)}</a>`;
@@ -84,7 +84,8 @@ function renderString(prop, value) {
       return esc(prop.format === 'date' ? d.toLocaleDateString() : d.toLocaleString());
     }
   }
-  return esc(value);
+  // pre-wrap keeps the line breaks and spacing typed into the source file.
+  return `<span class="text-value">${esc(value)}</span>`;
 }
 
 // ` open` on every <details> unless buildPreviewHtml was asked to start fully
