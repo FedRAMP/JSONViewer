@@ -2,8 +2,8 @@
   "info": {
     "title": "FedRAMP Consolidated Rules for 2026",
     "description": "This datafile contains the Consolidated Rules for FedRAMP in structured machine-readable text. It includes definitions, requirements, recommendations, and key security indicators.",
-    "version": "2026.07.14.01",
-    "last_updated": "2026-07-14",
+    "version": "2026.10.13.01",
+    "last_updated": "2026-10-13",
     "default_artifacts": {
       "FRR": [
         "Explanation of how the rule is followed, or an explanation of the reason and resulting risk to customers for not following the rule.",
@@ -75,6 +75,7 @@
           "tag": "Stakeholder",
           "alts": ["advisor", "advisors"],
           "do_not_link": true,
+          "ignore_in_terms": true,
           "updated": [
             {
               "date": "2026-06-24",
@@ -88,6 +89,7 @@
           "tag": "Stakeholder",
           "alts": ["agency", "agencies"],
           "do_not_link": true,
+          "ignore_in_terms": true,
           "reference": "44 U.S. Code § 3502 (1)",
           "reference_url": "https://www.govinfo.gov/app/details/USCODE-2023-title44/USCODE-2023-title44-chap35-subchapI-sec3502",
           "updated": [
@@ -152,6 +154,7 @@
           "tag": "Stakeholder",
           "alts": ["assessor", "assessors"],
           "do_not_link": true,
+          "ignore_in_terms": true,
           "updated": [
             {
               "date": "2026-06-24",
@@ -678,6 +681,21 @@
             }
           ]
         },
+        "FRD-MAY": {
+          "term": "MAY",
+          "definition": "The rule is truly optional. Parties SHOULD address such rules in their security documentation by explaining their decisions about how they handle such rules.",
+          "note": "This definition only applies when the term is used in all capital letters in FedRAMP materials, otherwise the plain language meaning applies.",
+          "tag": "Force of the Rule",
+          "alts": [],
+          "do_not_link": true,
+          "ignore_in_terms": true,
+          "updated": [
+            {
+              "date": "2026-09-13",
+              "comment": "Added force to FedRAMP Definitions for clarity."
+            }
+          ]
+        },
         "FRD-MCE": {
           "term": "Minimal Customer Effect",
           "definition": "An unwanted customer effect that is only noticeable by some users. This includes minor inconveniences such as reduced performance.",
@@ -687,6 +705,36 @@
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
+            }
+          ]
+        },
+        "FRD-MST": {
+          "term": "MUST",
+          "definition": "The rule is an absolute requirement. Parties MUST meet such rules and address them in their security documentation. Failure to follow the rule is a vulnerability likely requiring corrective action and/or the denial of initial or ongoing FedRAMP Certification.",
+          "note": "This definition only applies when the term is used in all capital letters in FedRAMP materials, otherwise the plain language meaning applies.",
+          "tag": "Force of the Rule",
+          "alts": [],
+          "do_not_link": true,
+          "ignore_in_terms": true,
+          "updated": [
+            {
+              "date": "2026-09-13",
+              "comment": "Added force to FedRAMP Definitions for clarity."
+            }
+          ]
+        },
+        "FRD-MNT": {
+          "term": "MUST NOT",
+          "definition": "The rule is an absolute prohibition. Parties MUST meet such rules and address them in their security documentation. Failure to follow the rule is a vulnerability likely requiring corrective action and/or the denial of initial or ongoing FedRAMP Certification.",
+          "note": "This definition only applies when the term is used in all capital letters in FedRAMP materials, otherwise the plain language meaning applies.",
+          "tag": "Force of the Rule",
+          "alts": [],
+          "do_not_link": true,
+          "ignore_in_terms": true,
+          "updated": [
+            {
+              "date": "2026-09-13",
+              "comment": "Added force to FedRAMP Definitions for clarity."
             }
           ]
         },
@@ -852,6 +900,7 @@
             "cloud service providers"
           ],
           "do_not_link": true,
+          "ignore_in_terms": true,
           "updated": [
             {
               "date": "2026-06-24",
@@ -956,6 +1005,40 @@
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
+            }
+          ]
+        },
+        "FRD-SHD": {
+          "term": "SHOULD",
+          "definition": "There may exist valid reasons in particular circumstances to ignore this rule, but the full implications must be understood and carefully weighed. Parties MUST address such rules in their security documentation by explaining their decisions about how they handle such rules.",
+          "note": "This definition only applies when the term is used in all capital letters in FedRAMP materials, otherwise the plain language meaning applies.",
+          "tag": "Force of the Rule",
+          "alts": [],
+          "do_not_link": true,
+          "ignore_in_terms": true,
+          "updated": [
+            {
+              "date": "2026-09-13",
+              "comment": "Added force to FedRAMP Definitions for clarity."
+            }
+          ]
+        },
+        "FRD-SNT": {
+          "term": "SHOULD NOT",
+          "definition": "There may exist valid reasons in particular circumstances when the particular action is acceptable or even useful, but the full implications must be understood and carefully weighed. Parties MUST address such rules in their security documentation by explaining their decisions about how they handle such rules.",
+          "note": "This definition only applies when the term is used in all capital letters in FedRAMP materials, otherwise the plain language meaning applies.",
+          "tag": "Force of the Rule",
+          "alts": [],
+          "do_not_link": true,
+          "ignore_in_terms": true,
+          "updated": [
+            {
+              "date": "2026-10-08",
+              "comment": "Fixed a typo - understood instead of understand."
+            },
+            {
+              "date": "2026-09-13",
+              "comment": "Added force to FedRAMP Definitions for clarity."
             }
           ]
         },
@@ -1169,7 +1252,7 @@
               "note": "Anyone at GSA can send email from @fedramp.gov or @gsa.gov - FedRAMP team members will typically have \"FedRAMP\" or \"F20B\" in their name but this is not universal or enforceable. The nature of government enterprise IT services makes it difficult for FedRAMP to isolate FedRAMP-specific team members with enforceable identifiers.",
               "force": "MUST",
               "affects": ["FedRAMP"],
-              "terms": ["Provider"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1188,7 +1271,7 @@
               "note": "Messages sent by FedRAMP without one of these designators are considered general communications and do not require an elevated reaction; these may be resolved in the normal course of business by the cloud service provider.",
               "force": "MUST",
               "affects": ["FedRAMP"],
-              "terms": ["FedRAMP Security Inbox", "Incident", "Provider"],
+              "terms": ["FedRAMP Security Inbox", "Incident"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1259,11 +1342,7 @@
               "note": "FedRAMP Class D Certified cloud service providers are expected to address Emergency messages (including tests) from FedRAMP with a reaction time appropriate to operating a service where failure to react rapidly might have a severe or debilitating customer effect on the U.S. Government; some Emergency messages may require faster reaction and all such messages should be addressed as quickly as possible.",
               "force": "MUST",
               "affects": ["FedRAMP"],
-              "terms": [
-                "Debilitating Customer Effect",
-                "FedRAMP Certified",
-                "Provider"
-              ],
+              "terms": ["Debilitating Customer Effect", "FedRAMP Certified"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1288,7 +1367,7 @@
               "statement": "FedRAMP MAY track and publicly share the time required by cloud service providers to take the actions specified in messages that require an elevated reaction.",
               "force": "MAY",
               "affects": ["FedRAMP"],
-              "terms": ["Provider"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1312,14 +1391,18 @@
               "artifacts": {
                 "all": ["Email address to receive messages from FedRAMP"]
               },
-              "terms": ["FedRAMP Security Inbox", "Provider"],
+              "controls": ["si-5"],
+              "terms": ["FedRAMP Security Inbox"],
               "updated": [
+                {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added si-5."
+                },
                 {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["si-5"]
+              ]
             },
             "AFC-CSO-NOC": {
               "name": "Notification of Changes",
@@ -1339,7 +1422,7 @@
                   "name": "[CSP] Notification of Changes"
                 }
               ],
-              "terms": ["FedRAMP Security Inbox", "Provider"],
+              "terms": ["FedRAMP Security Inbox"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1358,7 +1441,7 @@
                   "Automated validation to check FSI mailbox configuration"
                 ]
               },
-              "terms": ["FedRAMP Security Inbox", "Provider"],
+              "terms": ["FedRAMP Security Inbox"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1372,7 +1455,7 @@
               "note": "This requirement is intended to prevent cloud service providers from requiring FedRAMP to complete a CAPTCHA, log into a customer portal, or otherwise take service-specific actions that might prevent the security team from receiving the message.",
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Provider"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1386,7 +1469,7 @@
               "note": "Timeframes may vary by FedRAMP Certification class.",
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Certification Class", "Provider"],
+              "terms": ["Certification Class"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1406,7 +1489,7 @@
                   "Automated validation to check FSI mailbox configuration"
                 ]
               },
-              "terms": ["Provider"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1420,7 +1503,7 @@
               "note": "Timeframes may vary by FedRAMP Certification class.",
               "force": "SHOULD",
               "affects": ["Providers"],
-              "terms": ["Certification Class", "Provider"],
+              "terms": ["Certification Class"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1433,7 +1516,7 @@
               "statement": "Providers SHOULD promptly and automatically acknowledge the receipt of messages received from FedRAMP in their FedRAMP Security Inbox.",
               "force": "SHOULD",
               "affects": ["Providers"],
-              "terms": ["FedRAMP Security Inbox", "Promptly", "Provider"],
+              "terms": ["FedRAMP Security Inbox", "Promptly"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1507,7 +1590,7 @@
               "statement": "Agencies MUST maintain agency-wide policy that aligns with the requirements in OMB Memorandum M-24-15.",
               "force": "MUST",
               "affects": ["Agencies"],
-              "terms": ["Agency"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1532,7 +1615,7 @@
                   "name": "Submit an ATO Letter"
                 }
               ],
-              "terms": ["Agency"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1549,7 +1632,7 @@
               ],
               "force": "MUST",
               "affects": ["Agencies"],
-              "terms": ["Agency", "Artifacts", "Machine-Readable"],
+              "terms": ["Artifacts", "Machine-Readable"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1571,11 +1654,7 @@
                   "name": "[For Agencies] Additional Information, Security Requirements, or Certification Change, or After Request Form"
                 }
               ],
-              "terms": [
-                "Agency",
-                "Cloud Service Offering",
-                "FedRAMP Certified"
-              ],
+              "terms": ["Cloud Service Offering", "FedRAMP Certified"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1598,7 +1677,6 @@
                 }
               ],
               "terms": [
-                "Agency",
                 "Certification Data",
                 "Cloud Service Offering",
                 "FedRAMP Certified"
@@ -1625,7 +1703,6 @@
                 }
               ],
               "terms": [
-                "Agency",
                 "Certification Path",
                 "Certification Type",
                 "Cloud Service Offering",
@@ -1643,7 +1720,7 @@
               "statement": "Agencies SHOULD participate in FedRAMP working groups, communities of practice, and stakeholder engagements to supply feedback and align practices across government.",
               "force": "SHOULD",
               "affects": ["Agencies"],
-              "terms": ["Agency"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1655,11 +1732,15 @@
               "name": "Agency Liaison Program",
               "statement": "Agencies SHOULD assign at least 1 federal employee to be an active participant in the FedRAMP Agency Liaison program.",
               "reference": "Agency Liaison Program",
-              "reference_url": "https://www.fedramp.gov/preview/2026/agencies/support/liaisons",
+              "reference_url": "https://www.fedramp.gov/2026/agencies/support/liaisons",
               "force": "SHOULD",
               "affects": ["Agencies"],
-              "terms": ["Agency"],
+              "terms": [],
               "updated": [
+                {
+                  "date": "2026-09-13",
+                  "comment": "Fixed broken reference URL for the Agency Liaison Program."
+                },
                 {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -1672,7 +1753,7 @@
               "note": "A shared FedRAMP agency inbox may follow an agency-specific format such as agency-fedramp@agency.gov.",
               "force": "SHOULD",
               "affects": ["Agencies"],
-              "terms": ["Agency"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1687,14 +1768,10 @@
               "statement": "Agencies MUST complete the Authorization to Operate process for federal information systems that use FedRAMP Certified cloud service offerings.",
               "note": "FedRAMP provides technical assistance to help agencies navigate this process.",
               "reference": "Using a FedRAMP Certified Cloud Service Offering",
-              "reference_url": "https://fedramp.gov/preview/2026/agencies/use",
+              "reference_url": "https://www.fedramp.gov/2026/agencies/use",
               "force": "MUST",
               "affects": ["Agencies"],
-              "terms": [
-                "Agency",
-                "Cloud Service Offering",
-                "FedRAMP Certified"
-              ],
+              "terms": ["Cloud Service Offering", "FedRAMP Certified"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1707,7 +1784,7 @@
               "statement": "Agencies MUST collaborate with FedRAMP when discrepancies or conflicts arise between agency-specific security determinations and the FedRAMP Certification Package.",
               "force": "MUST",
               "affects": ["Agencies"],
-              "terms": ["Agency", "Certification Package"],
+              "terms": ["Certification Package"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1720,25 +1797,25 @@
               "statement": "Agencies MUST review the Secure Configuration Guides supplied by Providers and configure relevant security settings.",
               "force": "MUST",
               "affects": ["Agencies"],
-              "terms": ["Agency", "Provider"],
+              "controls": ["cm-10", "cm-5", "cm-6", "ia-11"],
+              "terms": [],
               "updated": [
+                {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added cm-10, cm-5, cm-6, ia-11."
+                },
                 {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["cm-10", "cm-5", "cm-6", "ia-11"]
+              ]
             },
             "AGU-USE-AFR": {
               "name": "Accept FedRAMP Rules",
               "statement": "Agencies MUST allow FedRAMP Certified cloud service offerings to follow FedRAMP rules.",
               "force": "MUST",
               "affects": ["Agencies"],
-              "terms": [
-                "Agency",
-                "Cloud Service Offering",
-                "FedRAMP Certified"
-              ],
+              "terms": ["Cloud Service Offering", "FedRAMP Certified"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1761,7 +1838,6 @@
                 }
               ],
               "terms": [
-                "Agency",
                 "Certification Data",
                 "FedRAMP Certification Report",
                 "Likely",
@@ -1783,7 +1859,6 @@
               "force": "SHOULD",
               "affects": ["Agencies"],
               "terms": [
-                "Agency",
                 "Cloud Service Offering",
                 "FedRAMP Certification Report",
                 "Ongoing Certification",
@@ -1802,7 +1877,6 @@
               "force": "SHOULD",
               "affects": ["Agencies"],
               "terms": [
-                "Agency",
                 "Cloud Service Offering",
                 "Ongoing Certification",
                 "Quarterly Review"
@@ -1828,13 +1902,11 @@
                 }
               ],
               "terms": [
-                "Agency",
                 "Certification Data",
                 "FedRAMP Certification Report",
                 "Likely",
                 "Ongoing Certification",
                 "Ongoing Certification Report (OCR)",
-                "Provider",
                 "Quarterly Review"
               ],
               "updated": [
@@ -1850,7 +1922,6 @@
               "force": "SHOULD",
               "affects": ["Agencies"],
               "terms": [
-                "Agency",
                 "Cloud Service Offering",
                 "Information Resource",
                 "Third-Party Information Resource"
@@ -1867,11 +1938,7 @@
               "statement": "Agencies SHOULD NOT authorize the use of a FedRAMP Class A Certified cloud service offering for more than 12 months UNLESS the cloud service offering is actively seeking a FedRAMP Class B, C, or D Certification.",
               "force": "SHOULD NOT",
               "affects": ["Agencies"],
-              "terms": [
-                "Agency",
-                "Cloud Service Offering",
-                "FedRAMP Certified"
-              ],
+              "terms": ["Cloud Service Offering", "FedRAMP Certified"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1886,7 +1953,7 @@
               "statement": "Agencies MUST follow the most recent FedRAMP Consolidated Rules when initiating agency-sponsored FedRAMP Certification.",
               "force": "MUST",
               "affects": ["Agencies"],
-              "terms": ["Agency"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -1979,7 +2046,6 @@
               "force": "MUST",
               "affects": ["Agencies"],
               "terms": [
-                "Agency",
                 "Cloud Service Offering",
                 "FedRAMP Certification Report",
                 "Ongoing Certification",
@@ -1998,7 +2064,6 @@
               "force": "SHOULD",
               "affects": ["Agencies"],
               "terms": [
-                "Agency",
                 "Certification Data",
                 "Cloud Service Offering",
                 "Ongoing Certification",
@@ -2016,7 +2081,7 @@
           "OCR": {
             "CCM-OCR-AVL": {
               "name": "Report Availability",
-              "statement": "Providers MUST supply an Ongoing Certification Report to all necessary parties every 3 months, covering the entire period since the previous summary, in a consistent format that is human readable; this report MUST include high-level summaries of at least the following information:",
+              "statement": "Providers MUST supply an Ongoing Certification Report to all necessary parties every 3 months, covering the entire period since the previous summary, in a consistent format that is human readable; this report MUST include high-level summaries of at least the following information (if applicable):",
               "following_information": [
                 "Changes to FedRAMP Certification Data",
                 "Planned changes to FedRAMP Certification Data during at least the next 3 months",
@@ -2039,9 +2104,11 @@
                 "name": "FedRAMP Ongoing Certification Report (CCM-OCR-AVL)",
                 "url": "https://fedramp.gov/schemas/fedramp-ongoing-certification-report-schema-2026-06-24.json"
               },
+              "timeframe_type": "months",
+              "timeframe_num": 3,
+              "controls": ["ca-7"],
               "terms": [
                 "Accepted Vulnerability",
-                "Agency",
                 "All Necessary Parties",
                 "Certification Data",
                 "Cloud Service Offering",
@@ -2050,17 +2117,23 @@
                 "Incident",
                 "Ongoing Certification",
                 "Ongoing Certification Report (OCR)",
-                "Provider",
                 "Transformative Change",
                 "Vulnerability"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ca-7."
+                },
+                {
+                  "date": "2026-09-13",
+                  "comment": "Added (if applicable) to clarify that some of these items are not always required depending on the FedRAMP Certification Type or Class."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ca-7"]
+              ]
             },
             "CCM-OCR-NRD": {
               "name": "Next Report Date",
@@ -2071,8 +2144,7 @@
                 "Certification Data",
                 "FedRAMP Certification Report",
                 "Ongoing Certification",
-                "Ongoing Certification Report (OCR)",
-                "Provider"
+                "Ongoing Certification Report (OCR)"
               ],
               "updated": [
                 {
@@ -2094,8 +2166,7 @@
                 "All Necessary Parties",
                 "FedRAMP Certification Report",
                 "Ongoing Certification",
-                "Ongoing Certification Report (OCR)",
-                "Provider"
+                "Ongoing Certification Report (OCR)"
               ],
               "updated": [
                 {
@@ -2114,11 +2185,9 @@
                 "all": ["How the summary will be delivered"]
               },
               "terms": [
-                "Agency",
                 "FedRAMP Certification Report",
                 "Ongoing Certification",
-                "Ongoing Certification Report (OCR)",
-                "Provider"
+                "Ongoing Certification Report (OCR)"
               ],
               "updated": [
                 {
@@ -2137,8 +2206,7 @@
                 "FedRAMP Certification Report",
                 "Likely",
                 "Ongoing Certification",
-                "Ongoing Certification Report (OCR)",
-                "Provider"
+                "Ongoing Certification Report (OCR)"
               ],
               "updated": [
                 {
@@ -2153,12 +2221,7 @@
               "note": "This recommendation is intended to discourage hundreds of cloud service providers from releasing their Ongoing Certification Reports during the first or last week of each quarter because that is the easiest way for a single provider to track this deliverable; the result would overwhelm agencies with many cloud services. Widely used cloud service providers are encouraged to work with their customers to identify ideal timeframes for this cycle.",
               "force": "SHOULD",
               "affects": ["Providers"],
-              "terms": [
-                "Agency",
-                "Ongoing Certification",
-                "Provider",
-                "Regularly"
-              ],
+              "terms": ["Ongoing Certification", "Regularly"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -2177,7 +2240,6 @@
                 "Likely",
                 "Ongoing Certification",
                 "Ongoing Certification Report (OCR)",
-                "Provider",
                 "Responsibly"
               ],
               "updated": [
@@ -2238,20 +2300,22 @@
                 }
               },
               "affects": ["Providers"],
+              "controls": ["ca-7"],
               "terms": [
-                "Agency",
                 "All Necessary Parties",
                 "Ongoing Certification",
-                "Provider",
                 "Quarterly Review"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ca-7."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ca-7"]
+              ]
             },
             "CCM-QTR-REG": {
               "name": "Meeting Registration Info",
@@ -2261,11 +2325,7 @@
               "artifacts": {
                 "all": ["URL to the registration page or calendar file."]
               },
-              "terms": [
-                "All Necessary Parties",
-                "Provider",
-                "Quarterly Review"
-              ],
+              "terms": ["All Necessary Parties", "Quarterly Review"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -2278,7 +2338,7 @@
               "statement": "Providers MUST publicly supply the target date for their next Quarterly Review with other public FedRAMP Certification Data.",
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Certification Data", "Provider", "Quarterly Review"],
+              "terms": ["Certification Data", "Quarterly Review"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -2291,12 +2351,7 @@
               "statement": "Providers MUST NOT irresponsibly disclose sensitive information in a Quarterly Review that would likely have an adverse effect on the cloud service offering.",
               "force": "MUST NOT",
               "affects": ["Providers"],
-              "terms": [
-                "Cloud Service Offering",
-                "Likely",
-                "Provider",
-                "Quarterly Review"
-              ],
+              "terms": ["Cloud Service Offering", "Likely", "Quarterly Review"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -2309,11 +2364,13 @@
               "statement": "Providers SHOULD regularly schedule Quarterly Reviews to occur at least 3 business days after releasing an Ongoing Certification Report AND within 10 business days of such release.",
               "force": "SHOULD",
               "affects": ["Providers"],
+              "timeframe_type": "bizdays",
+              "timeframe_num_min": 3,
+              "timeframe_num_max": 10,
               "terms": [
                 "FedRAMP Certification Report",
                 "Ongoing Certification",
                 "Ongoing Certification Report (OCR)",
-                "Provider",
                 "Quarterly Review",
                 "Regularly"
               ],
@@ -2329,25 +2386,25 @@
               "statement": "Providers SHOULD supply additional information in Quarterly Reviews that the provider determines is of interest, use, or otherwise relevant to agencies.",
               "force": "SHOULD",
               "affects": ["Providers"],
-              "terms": ["Agency", "Provider", "Quarterly Review"],
+              "controls": ["ca-7"],
+              "terms": ["Quarterly Review"],
               "updated": [
+                {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ca-7."
+                },
                 {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ca-7"]
+              ]
             },
             "CCM-QTR-RTR": {
               "name": "Record/Transcribe Reviews",
               "statement": "Providers SHOULD record or transcribe Quarterly Reviews and supply them to all necessary parties.",
               "force": "SHOULD",
               "affects": ["Providers"],
-              "terms": [
-                "All Necessary Parties",
-                "Provider",
-                "Quarterly Review"
-              ],
+              "terms": ["All Necessary Parties", "Quarterly Review"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -2361,13 +2418,7 @@
               "note": "This is because agencies are less likely to actively participate in meetings with third parties; the cloud service provider's independent assessor should be considered relevant by default.",
               "force": "SHOULD NOT",
               "affects": ["Providers"],
-              "terms": [
-                "Agency",
-                "Assessor",
-                "Likely",
-                "Provider",
-                "Quarterly Review"
-              ],
+              "terms": ["Likely", "Quarterly Review"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -2381,10 +2432,8 @@
               "force": "MAY",
               "affects": ["Providers"],
               "terms": [
-                "Agency",
                 "Cloud Service Offering",
                 "Likely",
-                "Provider",
                 "Quarterly Review",
                 "Responsibly"
               ],
@@ -2403,7 +2452,6 @@
               "terms": [
                 "Cloud Service Offering",
                 "Likely",
-                "Provider",
                 "Quarterly Review",
                 "Responsibly"
               ],
@@ -2516,7 +2564,7 @@
                 "Sales Contact Information",
                 "Security Contact Information",
                 "Product Website Link",
-                "Link to Product Logo",
+                "Link to Product Logo (must be a valid image link, properly named, that will display in a browser without processing - transparent PNG preferred)",
                 "Overall Service Description",
                 "Detailed list of specific services and their security categories (see CDS-CSO-SVC (Public Service List) (Service List))",
                 "Link to Secure Configuration Guidance",
@@ -2525,7 +2573,10 @@
                 "Next Ongoing Certification Report date (see CCM-OCR-NRD (Next Report Date))",
                 "Current FedRAMP Recognized independent assessment service"
               ],
-              "note": "Generally, this information should be available on a public webpage or publicly shared in a FedRAMP-compatible trust center.",
+              "notes": [
+                "Generally, this information should be available on a public webpage or publicly shared in a FedRAMP-compatible trust center.",
+                "The JSON data for this rule will be consumed by FedRAMP and agency GRC tools using automation with web-based tools. Do not expect FedRAMP or your customers to download this data directly, it should be accessible for common web frameworks. FedRAMP strongly recommends that application engineering experts be involved in making public JSON data and the related information available in a way that can work with web-based applications."
+              ],
               "related": ["CDS-CSO-SVC", "CCM-OCR-NRD"],
               "force": "MUST",
               "affects": ["Providers"],
@@ -2545,11 +2596,14 @@
                 "FedRAMP Recognized",
                 "Ongoing Certification",
                 "Ongoing Certification Report (OCR)",
-                "Provider",
                 "Security Category",
                 "Trust Center"
               ],
               "updated": [
+                {
+                  "date": "2026-10-05",
+                  "comment": "Clarified that logo link must be a viewable web image. Added note recommending the involvement of web-based application engineers."
+                },
                 {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -2574,7 +2628,6 @@
               "terms": [
                 "Certification Data",
                 "Cloud Service Offering",
-                "Provider",
                 "Security Category"
               ],
               "updated": [
@@ -2593,11 +2646,7 @@
               ],
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": [
-                "Certification Data",
-                "Cloud Service Offering",
-                "Provider"
-              ],
+              "terms": ["Certification Data", "Cloud Service Offering"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -2614,11 +2663,9 @@
               "timeframe_type": "weeks",
               "timeframe_num": 2,
               "terms": [
-                "Agency",
                 "Certification Data",
                 "Certification Path",
-                "Cloud Service Offering",
-                "Provider"
+                "Cloud Service Offering"
               ],
               "updated": [
                 {
@@ -2656,8 +2703,7 @@
                 "All Necessary Parties",
                 "Cloud Service Offering",
                 "Incident",
-                "Machine-Readable",
-                "Provider"
+                "Machine-Readable"
               ],
               "updated": [
                 {
@@ -2679,7 +2725,6 @@
               "terms": [
                 "All Necessary Parties",
                 "Certification Data",
-                "Provider",
                 "Trust Center"
               ],
               "updated": [
@@ -2694,7 +2739,7 @@
               "statement": "Providers MUST use automation to ensure information remains consistent between human-readable and machine-readable formats when FedRAMP Certification Data is provided in both formats.",
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Certification Data", "Machine-Readable", "Provider"],
+              "terms": ["Certification Data", "Machine-Readable"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -2727,11 +2772,9 @@
                 }
               ],
               "terms": [
-                "Agency",
                 "Certification Data",
                 "Cloud Service Offering",
-                "Likely",
-                "Provider"
+                "Likely"
               ],
               "updated": [
                 {
@@ -2760,8 +2803,7 @@
               "terms": [
                 "Certification Data",
                 "FedRAMP Practices",
-                "Machine-Readable",
-                "Provider"
+                "Machine-Readable"
               ],
               "updated": [
                 {
@@ -2784,8 +2826,7 @@
                 "Certification Data",
                 "FedRAMP Certification Report",
                 "Ongoing Certification",
-                "Ongoing Certification Report (OCR)",
-                "Provider"
+                "Ongoing Certification Report (OCR)"
               ],
               "updated": [
                 {
@@ -2839,7 +2880,7 @@
                 "Providers are encouraged to provide a single comprehensive set of materials for all shared aspects of the service offering and only provide separate materials for unique aspects of each service to minimize the burden on providers and agencies."
               ],
               "affects": ["Providers"],
-              "terms": ["Agency", "Provider"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -2861,7 +2902,6 @@
                 "Certification Package",
                 "Cloud Service Offering",
                 "Likely",
-                "Provider",
                 "Responsibly"
               ],
               "updated": [
@@ -2917,7 +2957,7 @@
                   "Explanation of how FedRAMP can obtain this information."
                 ]
               },
-              "terms": ["Agency", "Certification Data", "Trust Center"],
+              "terms": ["Certification Data", "Trust Center"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -2999,7 +3039,7 @@
                   "name": "[CSP] Agency Access Denial"
                 }
               ],
-              "terms": ["Agency", "Certification Data", "Provider"],
+              "terms": ["Certification Data"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -3018,7 +3058,7 @@
                   "Explanation of how the provider decides whether or not to share these materials or other related policies."
                 ]
               },
-              "terms": ["Agency", "Certification Package", "Provider"],
+              "terms": ["Certification Package"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -3052,7 +3092,6 @@
               "terms": [
                 "All Necessary Parties",
                 "Certification Data",
-                "Provider",
                 "Trust Center"
               ],
               "updated": [
@@ -3130,14 +3169,18 @@
                   "List of cryptographic modules including whether these modules are validated under the NIST Cryptographic Module Validation Program or are update streams of such modules."
                 ]
               },
-              "terms": ["Federal Customer Data", "Provider", "Validation"],
+              "controls": ["au-9.3", "cm-3.6", "ia-7", "sc-28.1", "sc-8.1"],
+              "terms": ["Federal Customer Data", "Validation"],
               "updated": [
+                {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added au-9.3, cm-3.6, ia-7, sc-28.1, sc-8.1."
+                },
                 {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["au-9.3", "cm-3.6", "ia-7", "sc-28.1", "sc-8.1"]
+              ]
             },
             "CMU-CSO-UVM": {
               "name": "Using Validated Cryptographic Modules",
@@ -3179,15 +3222,24 @@
                   }
                 }
               },
+              "note": "Cryptographic modules include specific algorithms by definition; if an update stream of a cryptographic module adds new algorithms that were not previously validated then those algorithms can not be considered within the scope of update stream usage under these rules as they are new algorithms within the module that have never been validated.",
               "affects": ["Providers"],
-              "terms": ["Federal Customer Data", "Provider", "Validation"],
+              "controls": ["ac-18", "au-9.3", "ia-7", "sc-28.1", "sc-8.1"],
+              "terms": ["Federal Customer Data", "Validation"],
               "updated": [
+                {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ac-18, au-9.3, ia-7, sc-28.1, sc-8.1."
+                },
+                {
+                  "date": "2026-10-05",
+                  "comment": "Added a note clarifying that new algorithms in update streams of modules are not included in the scope of updates to  validated cryptographic modules."
+                },
                 {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ac-18", "au-9.3", "ia-7", "sc-28.1", "sc-8.1"]
+              ]
             },
             "CMU-CSO-CAT": {
               "name": "Configuration of Agency Tenants",
@@ -3199,7 +3251,7 @@
                   "List of cryptographic modules used by default including whether these modules are validated under the NIST Cryptographic Module Validation Program or are update streams of such modules."
                 ]
               },
-              "terms": ["Agency", "Provider", "Validation"],
+              "terms": ["Validation"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -3267,7 +3319,7 @@
               "maintain": "2027-07-01",
               "optional_adoption": "2026-07-04",
               "grace": {
-                "default": "2027-01-01",
+                "default": "2027-07-01",
                 "until_next_assessment": true
               }
             }
@@ -3279,7 +3331,7 @@
               "applicability": {
                 "types": ["Rev5"],
                 "paths": ["Program", "Agency"],
-                "classes": ["A", "B", "C", "D"],
+                "classes": ["B", "C", "D"],
                 "affects": ["Providers"]
               }
             }
@@ -3330,7 +3382,6 @@
                 "Certification Package",
                 "Information Resource",
                 "Initial Incident Report (IIR)",
-                "Provider",
                 "Security Category",
                 "Third-Party Information Resource",
                 "Validation",
@@ -3354,7 +3405,7 @@
               ],
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Certification Package", "Provider"],
+              "terms": ["Certification Package"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -3384,19 +3435,21 @@
               },
               "related": ["IVV-IAS-OSA"],
               "affects": ["Providers"],
+              "controls": ["ca-2", "ca-2.1", "ca-2.2", "ca-7.1"],
               "terms": [
-                "Assessor",
                 "Certification Package",
-                "FedRAMP Independent Assessment",
-                "Provider"
+                "FedRAMP Independent Assessment"
               ],
               "updated": [
+                {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ca-2, ca-2.1, ca-2.2, ca-7.1."
+                },
                 {
                   "date": "2026-06-25",
                   "comment": "Added after official launch to clarify that the provider is required to supply this artifact."
                 }
-              ],
-              "controls": ["ca-2", "ca-2.1", "ca-2.2", "ca-7.1"]
+              ]
             }
           }
         },
@@ -3435,7 +3488,7 @@
                 "This rule does not require or expect persistent human review of all materials in this cadence."
               ],
               "affects": ["Providers"],
-              "terms": ["Certification Package", "Persistently", "Provider"],
+              "terms": ["Certification Package", "Persistently"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -3477,7 +3530,6 @@
               "terms": [
                 "Certification Package",
                 "Persistently",
-                "Provider",
                 "Significant Change",
                 "Transformative Change"
               ],
@@ -3551,7 +3603,7 @@
             "applicability": {
               "types": ["Rev5"],
               "paths": ["Agency"],
-              "classes": ["A", "B", "C", "D"],
+              "classes": ["B", "C", "D"],
               "affects": ["Providers"]
             }
           }
@@ -3626,7 +3678,6 @@
                 "FedRAMP Practices",
                 "Handle",
                 "Information Resource",
-                "Provider",
                 "Security Category",
                 "Third-Party Information Resource"
               ],
@@ -3659,7 +3710,6 @@
                 "Initial Certification",
                 "Ongoing Certification",
                 "Ongoing Certification Report (OCR)",
-                "Provider",
                 "Security Decision Record (SDR)",
                 "Validation"
               ],
@@ -3676,12 +3726,24 @@
             },
             "FRC-CSO-JSN": {
               "name": "FedRAMP JSON Schemas",
-              "statement": "Providers MUST supply machine-readable information in JSON documents that are valid against the corresponding JSON schema when a rule contains a FedRAMP JSON schema, UNLESS otherwise specified in the rule.",
-              "note": "FedRAMP JSON schemas are designed to be lightweight and flexible to establish a minimum set of structured information while allowing providers to improve on the format and structure of the information as needed to meet their needs and the needs of their customers.",
+              "statement": "Providers MUST supply machine-readable information in JSON documents that are valid against the corresponding JSON schema when a rule contains a FedRAMP JSON schema, UNLESS otherwise specified in the rule; public JSON data MUST be supplied in a manner compatible with modern web frameworks, including:",
+              "following_information": [
+                "Cross-Origin Resource Sharing (CORS) should allow web applications running on a different domain to access the public JSON data directly.",
+                "Proper web application headers should be supplied for public JSON data, including at least setting Content-Type to application/json and X-Content-Type-Options: nosniff."
+              ],
+              "notes": [
+                "FedRAMP JSON schemas are designed to be lightweight and flexible to establish a minimum set of structured information while allowing providers to improve on the format and structure of the information as needed to meet their needs and the needs of their customers.",
+                "Public JSON data is intended to be consumed by FedRAMP, agency GRC tools, and more - it should be available in a way that enables standard web-application use following standard web frameworks. Generally, if you can't write a web app to parse this data without configuring a browser to bypass security defaults then there has likely been a problem.",
+                "The Schema Validator available at fedramp.gov will not work properly if Cross-Origin Resource Sharing is not properly configured."
+              ],
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Machine-Readable", "Provider"],
+              "terms": ["Likely", "Machine-Readable"],
               "updated": [
+                {
+                  "date": "2026-10-05",
+                  "comment": "Clarified expectations for public JSON data to be compatible with standard web frameworks."
+                },
                 {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -3693,7 +3755,7 @@
               "statement": "Providers MUST maintain responsibility and accountability for the accuracy and completeness of all information in the FedRAMP Certification Package, especially when they engage a third party (such as an independent assessor, advisory service, or external tools) to supply information on their behalf.",
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Assessor", "Certification Package", "Provider"],
+              "terms": ["Certification Package"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -3707,7 +3769,7 @@
               "note": "This rule does not prevent a provider from seeking and maintaining a FedRAMP Rev5 Agency Certification and a FedRAMP 20x Program Certification for the same cloud service offering, however, doing so is strongly discouraged due to the increased complexity and risk of confusion for all parties.",
               "force": "MUST NOT",
               "affects": ["Providers"],
-              "terms": ["Agency", "Cloud Service Offering", "Provider"],
+              "terms": ["Cloud Service Offering"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -3727,7 +3789,7 @@
               ],
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Provider", "Security Category"],
+              "terms": ["Security Category"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -3745,7 +3807,7 @@
               ],
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["All Necessary Parties", "Provider", "Verification"],
+              "terms": ["All Necessary Parties", "Verification"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -3814,7 +3876,6 @@
               "force": "MUST",
               "affects": ["Providers"],
               "terms": [
-                "Agency",
                 "Artifacts",
                 "Certification Data",
                 "Certification Package",
@@ -3826,7 +3887,6 @@
                 "Information Resource",
                 "Initial Incident Report (IIR)",
                 "Ongoing Certification Report (OCR)",
-                "Provider",
                 "Trust Center",
                 "Validation",
                 "Verification",
@@ -3888,7 +3948,6 @@
                 "Initial Incident Report (IIR)",
                 "Ongoing Incident Report (OIR)",
                 "Persistently",
-                "Provider",
                 "Validation",
                 "Verification",
                 "Vulnerability",
@@ -3933,7 +3992,6 @@
                 "Certification Data",
                 "FedRAMP Independent Assessment",
                 "Incident",
-                "Provider",
                 "Quarterly Review",
                 "Security Decision Record (SDR)",
                 "Validation",
@@ -3953,10 +4011,8 @@
               "force": "MAY",
               "affects": ["Providers"],
               "terms": [
-                "Assessor",
                 "Certification Package",
                 "FedRAMP Recognized",
-                "Provider",
                 "Validation",
                 "Verification"
               ],
@@ -3986,7 +4042,7 @@
               ],
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Agency", "Provider"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -4007,7 +4063,7 @@
                   "name": "[For CSPs] FedRAMP Certification Application Form"
                 }
               ],
-              "terms": ["Provider"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -4023,7 +4079,6 @@
               "terms": [
                 "Certification Package",
                 "Cloud Service Offering",
-                "Provider",
                 "Validation",
                 "Verification"
               ],
@@ -4063,11 +4118,7 @@
                 }
               },
               "affects": ["Providers"],
-              "terms": [
-                "FedRAMP Independent Assessment",
-                "FedRAMP Recognized",
-                "Provider"
-              ],
+              "terms": ["FedRAMP Independent Assessment", "FedRAMP Recognized"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -4084,7 +4135,7 @@
               ],
               "force": "MUST NOT",
               "affects": ["Providers"],
-              "terms": ["Provider"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -4100,7 +4151,6 @@
               "terms": [
                 "Cloud Service Offering",
                 "FedRAMP Recognized",
-                "Provider",
                 "Validation",
                 "Verification"
               ],
@@ -4118,7 +4168,7 @@
               "statement": "Providers seeking a FedRAMP Rev5 Agency Certification MUST have completed the Authorization to Operate (ATO) process with their agency sponsor for the cloud service offering, concluding with a formal signed ATO letter that the agency has sent over official government channels to FedRAMP.",
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Agency", "Cloud Service Offering", "Provider"],
+              "terms": ["Cloud Service Offering"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -4137,7 +4187,7 @@
               ],
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Certification Class", "Provider"],
+              "terms": ["Certification Class"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -4155,11 +4205,7 @@
               "related": ["FRC-CCL-DNP"],
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": [
-                "All Necessary Parties",
-                "Certification Class",
-                "Provider"
-              ],
+              "terms": ["All Necessary Parties", "Certification Class"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -4173,7 +4219,7 @@
               "note": "Downgrading or canceling FedRAMP Certification will have severe negative consequences for the provider and their agency customers and should only be done after careful consideration and planning... but if it must be done, notify all necessary parties as soon as possible.",
               "force": "SHOULD",
               "affects": ["Providers"],
-              "terms": ["Agency", "All Necessary Parties", "Provider"],
+              "terms": ["All Necessary Parties"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -4206,49 +4252,13 @@
                 }
               },
               "affects": ["Providers"],
-              "terms": [
-                "Persistently",
-                "Provider",
-                "Validation",
-                "Verification"
-              ],
+              "controls": ["cm-2.2", "si-6"],
+              "terms": ["Persistently", "Validation", "Verification"],
               "updated": [
                 {
-                  "date": "2026-06-24",
-                  "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
-                }
-              ],
-              "controls": ["cm-2.2", "si-6"]
-            },
-            "FRC-CSX-MOT": {
-              "name": "Metrics Over Time for Key Security Indicators",
-              "varies_by_class": {
-                "a": {
-                  "statement": "Providers seeking 20x Class A Certification MAY supply historical metrics for Key Security Indicators.",
-                  "force": "MAY"
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added cm-2.2, si-6."
                 },
-                "b": {
-                  "statement": "Providers seeking 20x Class B Certification SHOULD supply historical metrics for Key Security Indicators.",
-                  "force": "SHOULD"
-                },
-                "c": {
-                  "statement": "Providers seeking 20x Class C Certification MUST supply historical metrics including status from persistent validation over at least the past 6 months for all Key Security Indicators.",
-                  "force": "MUST"
-                },
-                "d": {
-                  "statement": "Providers seeking 20x Class D Certification MUST provide historical metrics including status from persistent validation over at least the past 18 months for all Key Security Indicators.",
-                  "force": "MUST"
-                }
-              },
-              "note": "For initial FedRAMP Certification, providers will need to have mechanisms in place and agree to meet this requirement in the event the cloud service has not been operating with related metrics available for the required period prior to applying for initial certification.",
-              "affects": ["Providers"],
-              "terms": [
-                "Initial Certification",
-                "Persistently",
-                "Provider",
-                "Validation"
-              ],
-              "updated": [
                 {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -4277,27 +4287,30 @@
               },
               "note": "Different rules will be easy to automate for different providers, depending on the implementation, so FedRAMP generally leaves this implementation up to providers based on what makes the most sense for their own business and approach.",
               "affects": ["Providers"],
+              "controls": ["si-6"],
               "terms": [
                 "Persistently",
-                "Provider",
                 "Security Decision Record (SDR)",
                 "Validation",
                 "Verification"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added si-6."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["si-6"]
+              ]
             },
             "FRC-CSX-MAS": {
               "name": "Application within MAS",
               "statement": "Providers SHOULD apply ALL Key Security Indicators to ALL aspects of their cloud service offering that are within the FedRAMP Minimum Assessment Scope.",
               "force": "SHOULD",
               "affects": ["Providers"],
-              "terms": ["Cloud Service Offering", "Provider"],
+              "terms": ["Cloud Service Offering"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -5312,7 +5325,7 @@
               "reference": "NIST SP 800-53 Rev. 5, Security and Privacy Controls for Information Systems and Organizations",
               "reference_url": "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final",
               "affects": ["Providers"],
-              "terms": ["Provider", "Security Decision Record (SDR)"],
+              "terms": ["Security Decision Record (SDR)"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -5325,7 +5338,7 @@
               "statement": "Providers MUST assign all organization-defined control parameters, following FedRAMP Rev5 Controls Guidance, and ensure that all control parameter assignments are documented in the Security Decision Record (SDR).",
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Provider", "Security Decision Record (SDR)"],
+              "terms": ["Security Decision Record (SDR)"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -5338,7 +5351,7 @@
               "statement": "Providers MUST follow FedRAMP Rev5 Controls Guidance for the implementation and documentation of all applicable controls.",
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Provider"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -5348,15 +5361,19 @@
             },
             "FRC-CSF-RDY": {
               "name": "FedRAMP Ready Conversion",
-              "statement": "Providers with FedRAMP Rev5 Ready status MUST convert to a FedRAMP Certification by whichever of the follow dates is later: the expiration of their annual assessment or November 17, 2026 (the legacy FedRAMP Ready status will be entirely removed on December 31, 2027).",
+              "statement": "Providers with FedRAMP Rev5 Ready status MUST convert to a FedRAMP Certification by whichever of the following dates is later: the expiration of their annual assessment or November 17, 2026 (the legacy FedRAMP Ready status will be entirely removed on December 31, 2027).",
               "notes": [
                 "The simplest conversion in most cases would be to a FedRAMP 20x Class A Certification.",
                 "Cloud services that do not wish to convert or do not meet conversion criteria will be renamed Legacy FedRAMP Ready and otherwise retired from FedRAMP Ready."
               ],
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Provider"],
+              "terms": [],
               "updated": [
+                {
+                  "date": "2026-10-05",
+                  "comment": "Adding a missing ing (follow -> following)."
+                },
                 {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -5501,7 +5518,7 @@
               ],
               "force": "MUST",
               "affects": ["FedRAMP"],
-              "terms": ["Incident", "Provider"],
+              "terms": ["Incident"],
               "updated": [
                 {
                   "date": "2026-07-02",
@@ -5525,15 +5542,19 @@
                   "An incident log showing an example of one or more incidents being evaluated including the reason for the determination. The log can be from real incidents, simulated incidents, or a combination of sources."
                 ]
               },
+              "controls": ["au-5.2", "ir-4.11"],
               "terms": [
                 "FedRAMP Reportable Incident",
                 "Federal Customer Data",
                 "Incident",
                 "Likely",
-                "Promptly",
-                "Provider"
+                "Promptly"
               ],
               "updated": [
+                {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added au-5.2, ir-4.11."
+                },
                 {
                   "date": "2026-07-02",
                   "comment": "Update terminology from \"Response\" to \"Communication\" in FedRAMP Incident Evaluation rules."
@@ -5542,8 +5563,7 @@
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["au-5.2", "ir-4.11"]
+              ]
             },
             "IEC-CSO-DPR": {
               "name": "Default PAIN Rating",
@@ -5552,12 +5572,10 @@
               "force": "MUST",
               "affects": ["Providers"],
               "terms": [
-                "Agency",
                 "FedRAMP Reportable Incident",
                 "Incident",
                 "Potential Agency Impact",
-                "Promptly",
-                "Provider"
+                "Promptly"
               ],
               "updated": [
                 {
@@ -5820,27 +5838,30 @@
                   "name": "Provider's Trust Center or USDA Connect"
                 }
               ],
+              "controls": ["au-5.2", "ir-5"],
               "terms": [
                 "All Affected Parties",
                 "FedRAMP Reportable Incident",
                 "Incident",
                 "Initial Incident Report (IIR)",
-                "Provider",
                 "Responsibly"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added au-5.2, ir-5."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["au-5.2", "ir-5"]
+              ]
             },
             "IEC-CSO-OIR": {
               "name": "Ongoing Incident Reports",
               "varies_by_class": {
                 "a": {
-                  "statement": "Providers with Class A Certifications SHOULD responsibly notify all affected parties of ongoing activity as new information becomes available during incident response for FedRAMP Reportable Incidents, including updates (or lack of updates) to all previously reported information and as much of the the following additional information that is available and/or the current relevant status for each item:",
+                  "statement": "Providers with Class A Certifications SHOULD responsibly notify all affected parties of ongoing activity as new information becomes available during incident response for FedRAMP Reportable Incidents, including updates (or lack of updates) to all previously reported information and as much of the following additional information that is available and/or the current relevant status for each item:",
                   "following_information": [
                     "Observed incident activity",
                     "Indicators of compromise",
@@ -5893,7 +5914,7 @@
                   }
                 },
                 "b": {
-                  "statement": "Providers with Class B Certifications MUST responsibly notify all affected parties of ongoing activity as new information becomes available during incident response for FedRAMP Reportable Incidents, including updates (or lack of updates) to all previously reported information and as much of the the following additional information that is available and/or the current relevant status for each item:",
+                  "statement": "Providers with Class B Certifications MUST responsibly notify all affected parties of ongoing activity as new information becomes available during incident response for FedRAMP Reportable Incidents, including updates (or lack of updates) to all previously reported information and as much of the following additional information that is available and/or the current relevant status for each item:",
                   "following_information": [
                     "Observed incident activity",
                     "Indicators of compromise",
@@ -5946,7 +5967,7 @@
                   }
                 },
                 "c": {
-                  "statement": "Providers with Class C Certifications MUST responsibly notify all affected parties of ongoing activity as new information becomes available during incident response for FedRAMP Reportable Incidents, including updates (or lack of updates) to all previously reported information and as much of the the following additional information that is available and/or the current relevant status for each item:",
+                  "statement": "Providers with Class C Certifications MUST responsibly notify all affected parties of ongoing activity as new information becomes available during incident response for FedRAMP Reportable Incidents, including updates (or lack of updates) to all previously reported information and as much of the following additional information that is available and/or the current relevant status for each item:",
                   "following_information": [
                     "Observed incident activity",
                     "Indicators of compromise",
@@ -5999,7 +6020,7 @@
                   }
                 },
                 "d": {
-                  "statement": "Providers with Class D Certifications MUST responsibly notify all affected parties of ongoing activity as new information becomes available during incident response for FedRAMP Reportable Incidents, including updates (or lack of updates) to all previously reported information and as much of the the following additional information that is available and/or the current relevant status for each item:",
+                  "statement": "Providers with Class D Certifications MUST responsibly notify all affected parties of ongoing activity as new information becomes available during incident response for FedRAMP Reportable Incidents, including updates (or lack of updates) to all previously reported information and as much of the following additional information that is available and/or the current relevant status for each item:",
                   "following_information": [
                     "Observed incident activity",
                     "Indicators of compromise",
@@ -6077,21 +6098,28 @@
                   "name": "Provider's Trust Center or USDA Connect"
                 }
               ],
+              "controls": ["ir-5"],
               "terms": [
                 "All Affected Parties",
                 "FedRAMP Reportable Incident",
                 "Incident",
-                "Provider",
                 "Responsibly",
                 "Vulnerability Response"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ir-5."
+                },
+                {
+                  "date": "2026-09-13",
+                  "comment": "Removed the extra the in all statements."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ir-5"]
+              ]
             },
             "IEC-CSO-FIR": {
               "name": "Final Incident Report",
@@ -6306,20 +6334,23 @@
                   "name": "Provider's Trust Center or USDA Connect"
                 }
               ],
+              "controls": ["ir-5"],
               "terms": [
                 "All Affected Parties",
                 "Final Incident Report (FIR)",
                 "Incident",
-                "Provider",
                 "Responsibly"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ir-5."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ir-5"]
+              ]
             },
             "IEC-CSO-EFI": {
               "name": "Estimate Federal Impact",
@@ -6345,7 +6376,6 @@
                 "url": "https://fedramp.gov/schemas/fedramp-incident-report-schema-2026-06-24.json"
               },
               "terms": [
-                "Agency",
                 "Debilitating Customer Effect",
                 "Disruptive Customer Effect",
                 "Incident",
@@ -6353,8 +6383,7 @@
                 "Minimal Customer Effect",
                 "Narrow Customer Effect",
                 "Potential Agency Impact",
-                "Promptly",
-                "Provider"
+                "Promptly"
               ],
               "updated": [
                 {
@@ -6372,8 +6401,7 @@
               "terms": [
                 "All Affected Parties",
                 "FedRAMP Reportable Incident",
-                "Incident",
-                "Provider"
+                "Incident"
               ],
               "updated": [
                 {
@@ -6509,22 +6537,25 @@
                 "FedRAMP Recognized independent assessment services are listed on the FedRAMP Marketplace."
               ],
               "affects": ["Providers"],
+              "controls": ["ca-2", "ca-2.1", "ca-2.2", "ca-7.1", "ca-7.4"],
               "terms": [
                 "Certification Class",
                 "FedRAMP Independent Assessment",
                 "FedRAMP Recognized",
                 "Persistently",
-                "Provider",
                 "Validation",
                 "Verification"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ca-2, ca-2.1, ca-2.2, ca-7.1, ca-7.4."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ca-2", "ca-2.1", "ca-2.2", "ca-7.1", "ca-7.4"]
+              ]
             },
             "IVV-CSO-SEI": {
               "name": "Supply Evidence of Implementation",
@@ -6534,9 +6565,7 @@
               "affects": ["Providers"],
               "terms": [
                 "All Necessary Assessors",
-                "Assessor",
                 "FedRAMP Practices",
-                "Provider",
                 "Verification"
               ],
               "updated": [
@@ -6555,9 +6584,7 @@
               "affects": ["Providers"],
               "terms": [
                 "All Necessary Assessors",
-                "Assessor",
                 "FedRAMP Practices",
-                "Provider",
                 "Validation"
               ],
               "updated": [
@@ -6580,7 +6607,6 @@
               "terms": [
                 "Certification Package",
                 "FedRAMP Independent Assessment",
-                "Provider",
                 "Verification"
               ],
               "updated": [
@@ -6596,7 +6622,7 @@
               "related": ["IVV-CSO-USR"],
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Provider", "Validation", "Verification"],
+              "terms": ["Validation", "Verification"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -6611,8 +6637,6 @@
               "affects": ["Providers"],
               "terms": [
                 "All Necessary Assessors",
-                "Assessor",
-                "Provider",
                 "Validation",
                 "Verification"
               ],
@@ -6629,12 +6653,7 @@
               "note": "Many modern cloud services using effective automation do not need to use representative sampling and are capable of persistently verifying and validating the majority of their security measures automatically.",
               "force": "MAY",
               "affects": ["Providers"],
-              "terms": [
-                "Persistently",
-                "Provider",
-                "Validation",
-                "Verification"
-              ],
+              "terms": ["Persistently", "Validation", "Verification"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -6647,13 +6666,7 @@
               "statement": "Providers MAY ask for and accept advice from their assessor during assessment regarding techniques and procedures that will improve their security posture or the effectiveness, clarity, and accuracy of their verification, validation and reporting procedures, UNLESS doing so is likely to compromise the objectivity and integrity of the assessment.",
               "force": "MAY",
               "affects": ["Providers"],
-              "terms": [
-                "Assessor",
-                "Likely",
-                "Provider",
-                "Validation",
-                "Verification"
-              ],
+              "terms": ["Likely", "Validation", "Verification"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -6670,7 +6683,6 @@
               "force": "MUST",
               "affects": ["Assessors"],
               "terms": [
-                "Assessor",
                 "Cloud Service Offering",
                 "FedRAMP Practices",
                 "Verification"
@@ -6688,14 +6700,14 @@
               "note": "This requires reviewing the actual measures themselves at a technical level, such as reviewing underlying code as appropriate; don't simply review documentation or screenshots.",
               "force": "MUST",
               "affects": ["Assessors"],
-              "terms": ["Assessor", "FedRAMP Practices", "Validation"],
+              "controls": [],
+              "terms": ["FedRAMP Practices", "Validation"],
               "updated": [
                 {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": []
+              ]
             },
             "IVV-IAS-SUM": {
               "name": "Assessment Summary",
@@ -6704,10 +6716,8 @@
               "force": "MUST",
               "affects": ["Assessors"],
               "terms": [
-                "Assessor",
                 "Cloud Service Offering",
                 "FedRAMP Practices",
-                "Provider",
                 "Security Decision Record (SDR)"
               ],
               "updated": [
@@ -6724,10 +6734,8 @@
               "force": "MUST",
               "affects": ["Assessors"],
               "terms": [
-                "Assessor",
                 "Certification Package",
                 "Cloud Service Offering",
-                "Provider",
                 "Validation",
                 "Verification"
               ],
@@ -6746,10 +6754,8 @@
               "force": "MUST",
               "affects": ["Assessors"],
               "terms": [
-                "Assessor",
                 "Certification Package",
                 "FedRAMP Independent Assessment",
-                "Provider",
                 "Verification"
               ],
               "updated": [
@@ -6764,7 +6770,7 @@
               "statement": "Assessors SHOULD engage provider experts in discussion to understand the decisions made by the provider and inform expert qualitative assessment, and SHOULD perform independent research to test such information as part of the expert qualitative assessment process.",
               "force": "SHOULD",
               "affects": ["Assessors"],
-              "terms": ["Assessor", "Provider"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -6777,13 +6783,7 @@
               "statement": "Assessors MAY share advice with providers they are assessing about techniques and procedures that will improve the provider's security posture or the effectiveness, clarity, and accuracy of their verification, validation and reporting procedures, UNLESS doing so is likely to compromise the objectivity and integrity of the assessment.",
               "force": "MAY",
               "affects": ["Assessors"],
-              "terms": [
-                "Assessor",
-                "Likely",
-                "Provider",
-                "Validation",
-                "Verification"
-              ],
+              "terms": ["Likely", "Validation", "Verification"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -6825,7 +6825,6 @@
               "terms": [
                 "FedRAMP Independent Assessment",
                 "Persistently",
-                "Provider",
                 "Validation",
                 "Verification"
               ],
@@ -7102,7 +7101,7 @@
                 }
               },
               "affects": ["Providers"],
-              "terms": ["FedRAMP Independent Assessment", "Provider"],
+              "terms": ["FedRAMP Independent Assessment"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7117,7 +7116,9 @@
               "related": ["IVV-CSF-PCA"],
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["FedRAMP Independent Assessment", "Provider"],
+              "timeframe_type": "years",
+              "timeframe_num": 3,
+              "terms": ["FedRAMP Independent Assessment"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7130,7 +7131,7 @@
               "statement": "Providers MUST have Rev5 Controls with negative findings from the previous FedRAMP independent assessment included in the next FedRAMP independent assessment.",
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["FedRAMP Independent Assessment", "Provider"],
+              "terms": ["FedRAMP Independent Assessment"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7143,7 +7144,7 @@
               "statement": "Providers SHOULD include all applicable Rev5 Controls in each FedRAMP independent assessment.",
               "force": "SHOULD",
               "affects": ["Providers"],
-              "terms": ["FedRAMP Independent Assessment", "Provider"],
+              "terms": ["FedRAMP Independent Assessment"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7226,23 +7227,25 @@
                   "The code for the automated process used to generate the machine readable output."
                 ]
               },
+              "controls": ["cm-8.4", "ra-3", "si-4.19"],
               "terms": [
-                "Agency",
                 "Certification Package",
                 "Cloud Service Offering",
                 "Federal Customer Data",
                 "Handle",
                 "Information Resource",
-                "Likely",
-                "Provider"
+                "Likely"
               ],
               "updated": [
+                {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added cm-8.4, ra-3, si-4.19."
+                },
                 {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["cm-8.4", "ra-3", "si-4.19"]
+              ]
             },
             "MAS-CSO-FLO": {
               "name": "Information Flows and Security Categories",
@@ -7257,21 +7260,24 @@
                   "The code for the automated process used to generate the machine readable output."
                 ]
               },
+              "controls": ["ac-4", "cm-12", "cm-12.1", "ra-3", "si-4.19"],
               "terms": [
                 "Cloud Service Offering",
                 "Handle",
                 "Information Resource",
-                "Provider",
                 "Security Category",
                 "Third-Party Information Resource"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ac-4, cm-12, cm-12.1, ra-3, si-4.19."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ac-4", "cm-12", "cm-12.1", "ra-3", "si-4.19"]
+              ]
             },
             "MAS-CSO-TPR": {
               "name": "Third-Party Information Resources",
@@ -7296,21 +7302,24 @@
                 "name": "FedRAMP Certification Package Overview (FRC-CSO-PKG)",
                 "url": "https://fedramp.gov/schemas/fedramp-certification-package-overview-schema-2026-06-24.json"
               },
+              "controls": ["ra-3"],
               "terms": [
                 "Cloud Service Offering",
                 "Federal Customer Data",
                 "Information Resource",
                 "Initial Incident Report (IIR)",
-                "Provider",
                 "Third-Party Information Resource"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ra-3."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ra-3"]
+              ]
             },
             "MAS-CSO-MDI": {
               "name": "Metadata Inclusion",
@@ -7328,8 +7337,7 @@
               "terms": [
                 "Federal Customer Data",
                 "Information Resource",
-                "Initial Incident Report (IIR)",
-                "Provider"
+                "Initial Incident Report (IIR)"
               ],
               "updated": [
                 {
@@ -7345,12 +7353,10 @@
               "force": "MAY",
               "affects": ["Providers"],
               "terms": [
-                "Agency",
                 "Certification Package",
                 "Cloud Service Offering",
                 "FedRAMP Certified",
-                "Information Resource",
-                "Provider"
+                "Information Resource"
               ],
               "updated": [
                 {
@@ -7466,7 +7472,7 @@
               "related": ["CDS-CSO-PUB"],
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Certification Data", "Provider"],
+              "terms": ["Certification Data"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7488,7 +7494,7 @@
                   "name": "FedRAMP Marketplace Provider Listing Request Form"
                 }
               ],
-              "terms": ["Provider"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7503,7 +7509,7 @@
               "statement": "Assessors MUST obtain and maintain FedRAMP Recognition to be listed in the FedRAMP Marketplace.",
               "force": "MUST",
               "affects": ["Assessors"],
-              "terms": ["Assessor", "FedRAMP Recognized"],
+              "terms": ["FedRAMP Recognized"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7532,7 +7538,7 @@
                 "name": "FedRAMP Assessor Information Schema",
                 "url": "https://fedramp.gov/schemas/fedramp-assessor-information-schema-2026-06-24.json"
               },
-              "terms": ["Assessor"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7549,12 +7555,16 @@
                 {
                   "party": "FedRAMP",
                   "method": "form",
-                  "target": "https://help.fedramp.gov/hc/en-us/requests/new?ticket_form_id=52060327520795",
-                  "name": "[For Assessors/Advisors] Marketplace Listing Form"
+                  "target": "https://help.fedramp.gov/hc/en-us/requests/new?ticket_form_id=54220455254427",
+                  "name": "[For Assessors] Marketplace Listing Request Form"
                 }
               ],
-              "terms": ["Assessor"],
+              "terms": [],
               "updated": [
+                {
+                  "date": "2026-10-05",
+                  "comment": "Updated form name and URL."
+                },
                 {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -7584,7 +7594,7 @@
                 "name": "FedRAMP Advisory Service Information Schema",
                 "url": "https://fedramp.gov/schemas/fedramp-advisor-information-schema-2026-06-24.json"
               },
-              "terms": ["Advisor", "Machine-Readable"],
+              "terms": ["Machine-Readable"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7602,11 +7612,15 @@
                   "party": "FedRAMP",
                   "method": "form",
                   "target": "https://help.fedramp.gov/hc/en-us/requests/new?ticket_form_id=52060327520795",
-                  "name": "[For Assessors/Advisors] Marketplace Listing Form"
+                  "name": "[For Advisors] Marketplace Listing Request Form"
                 }
               ],
-              "terms": ["Advisor"],
+              "terms": [],
               "updated": [
+                {
+                  "date": "2026-10-05",
+                  "comment": "Updated form name."
+                },
                 {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -7623,7 +7637,9 @@
               ],
               "force": "MUST",
               "affects": ["Advisors"],
-              "terms": ["Advisor"],
+              "timeframe_type": "bizdays",
+              "timeframe_num": 5,
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7648,10 +7664,8 @@
               "force": "MUST",
               "affects": ["Providers"],
               "terms": [
-                "Agency",
                 "Cloud Service Offering",
                 "Information Resource",
-                "Provider",
                 "Third-Party Information Resource"
               ],
               "updated": [
@@ -7667,7 +7681,7 @@
               "note": "This is an opportunity for a business to showcase its goals and progress, and should be seen as a marketing and customer experience challenge instead of a compliance challenge.",
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Provider", "Trust Center"],
+              "terms": ["Trust Center"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7683,7 +7697,9 @@
               ],
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Certification Class", "Provider"],
+              "timeframe_type": "years",
+              "timeframe_num": 2,
+              "terms": ["Certification Class"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7747,7 +7763,7 @@
               "statement": "FedRAMP MUST maintain a process to collect foreign ownership, control, or influence declarations from FedRAMP Recognized assessors and updates to those declarations.",
               "force": "MUST",
               "affects": ["FedRAMP"],
-              "terms": ["Assessor", "FedRAMP Recognized"],
+              "terms": ["FedRAMP Recognized"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7760,12 +7776,7 @@
               "statement": "FedRAMP MUST NOT accept verification, validation, or other attestations from independent assessors who are not FedRAMP Recognized.",
               "force": "MUST NOT",
               "affects": ["FedRAMP"],
-              "terms": [
-                "Assessor",
-                "FedRAMP Recognized",
-                "Validation",
-                "Verification"
-              ],
+              "terms": ["FedRAMP Recognized", "Validation", "Verification"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7778,7 +7789,7 @@
               "statement": "FedRAMP MUST NOT restore FedRAMP Recognition for an assessor after FedRAMP has revoked that assessor's FedRAMP Recognition 2 times.",
               "force": "MUST NOT",
               "affects": ["FedRAMP"],
-              "terms": ["Assessor", "FedRAMP Recognized"],
+              "terms": ["FedRAMP Recognized"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7794,7 +7805,7 @@
               "note": "FedRAMP will remove FedRAMP Recognition immediately after the American Association for Laboratory Accreditation notifies FedRAMP that an assessor's accreditation has lapsed.",
               "force": "MUST",
               "affects": ["Assessors"],
-              "terms": ["Assessor", "FedRAMP Recognized"],
+              "terms": ["FedRAMP Recognized"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7814,7 +7825,7 @@
               "affects": ["Assessors"],
               "timeframe_type": "years",
               "timeframe_num": 2,
-              "terms": ["Assessor", "FedRAMP Recognized"],
+              "terms": ["FedRAMP Recognized"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7829,7 +7840,7 @@
               "reference_url": "https://portal.a2la.org/documents/",
               "force": "MUST",
               "affects": ["Assessors"],
-              "terms": ["Assessor", "FedRAMP Recognized"],
+              "terms": ["FedRAMP Recognized"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7847,7 +7858,7 @@
               "affects": ["Assessors"],
               "timeframe_type": "years",
               "timeframe_num": 1,
-              "terms": ["Assessor", "FedRAMP Recognized"],
+              "terms": ["FedRAMP Recognized"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7865,7 +7876,7 @@
               "affects": ["Assessors"],
               "timeframe_type": "years",
               "timeframe_num": 2,
-              "terms": ["Assessor", "FedRAMP Recognized"],
+              "terms": ["FedRAMP Recognized"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7879,7 +7890,7 @@
               "note": "A revocation may require extended time in revoked status while the assessor demonstrates acceptable performance in the A2LA Cybersecurity Inspection Body Program before seeking FedRAMP Recognition again.",
               "force": "MUST",
               "affects": ["Assessors"],
-              "terms": ["Assessor", "FedRAMP Recognized"],
+              "terms": ["FedRAMP Recognized"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7895,7 +7906,7 @@
               ],
               "force": "MUST",
               "affects": ["Assessors"],
-              "terms": ["Assessor"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7918,7 +7929,7 @@
                   "name": "FedRAMP Foreign Ownership, Control, or Influence Declaration Form"
                 }
               ],
-              "terms": ["Assessor"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7941,7 +7952,7 @@
                   "name": "FedRAMP Foreign Ownership, Control, or Influence Declaration Form"
                 }
               ],
-              "terms": ["Assessor"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7963,12 +7974,7 @@
               ],
               "force": "MUST",
               "affects": ["Assessors"],
-              "terms": [
-                "Agency",
-                "Assessor",
-                "Cloud Service Offering",
-                "Provider"
-              ],
+              "terms": ["Cloud Service Offering"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7981,7 +7987,7 @@
               "statement": "Assessors MUST supply a corrective action plan when FedRAMP requires one for performance standards deficiencies or organizational risks.",
               "force": "MUST",
               "affects": ["Assessors"],
-              "terms": ["Assessor"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -7994,7 +8000,7 @@
               "statement": "Assessors MUST treat deliverables prepared, performed, or submitted by personnel who do not meet required role qualifications as invalid for FedRAMP purposes.",
               "force": "MUST",
               "affects": ["Assessors"],
-              "terms": ["Assessor"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -8013,7 +8019,6 @@
               "timeframe_type": "years",
               "timeframe_num": 2,
               "terms": [
-                "Assessor",
                 "Cloud Service Offering",
                 "FedRAMP Independent Assessment"
               ],
@@ -8098,19 +8103,22 @@
                 "name": "FedRAMP Certification Package Overview (FRC-CSO-PKG)",
                 "url": "https://fedramp.gov/schemas/fedramp-certification-package-overview-schema-2026-06-24.json"
               },
+              "controls": ["cm-7"],
               "terms": [
                 "Cloud Service Offering",
                 "Privileged Account",
-                "Provider",
                 "Top-Level Administrative Account"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added cm-7."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["cm-7"]
+              ]
             },
             "SCG-CSO-AUP": {
               "name": "Use Instructions",
@@ -8124,7 +8132,7 @@
                   "Explanation of how the provider decides whether or not to share these materials or other related policies."
                 ]
               },
-              "terms": ["Certification Package", "Provider"],
+              "terms": ["Certification Package"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -8143,7 +8151,7 @@
                   "or explanation why this functionality is not available"
                 ]
               },
-              "terms": ["Provider"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -8164,7 +8172,6 @@
               },
               "terms": [
                 "Privileged Account",
-                "Provider",
                 "Top-Level Administrative Account"
               ],
               "updated": [
@@ -8189,7 +8196,6 @@
               },
               "terms": [
                 "Privileged Account",
-                "Provider",
                 "Top-Level Administrative Account"
               ],
               "updated": [
@@ -8210,7 +8216,7 @@
                   "or explanation why this functionality is not available"
                 ]
               },
-              "terms": ["Machine-Readable", "Provider"],
+              "terms": ["Machine-Readable"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -8229,7 +8235,7 @@
                   "or explanation why this functionality is not available"
                 ]
               },
-              "terms": ["Provider"],
+              "terms": [],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -8248,7 +8254,7 @@
                   "or explanation why this functionality is not available"
                 ]
               },
-              "terms": ["Machine-Readable", "Provider"],
+              "terms": ["Machine-Readable"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -8269,7 +8275,6 @@
               },
               "terms": [
                 "Privileged Account",
-                "Provider",
                 "Top-Level Administrative Account"
               ],
               "updated": [
@@ -8383,7 +8388,7 @@
               "note": "The circumstances and conditions of such a Corrective Action Plan will vary and be documented in the Correcive Action Plan.",
               "force": "MAY",
               "affects": ["FedRAMP"],
-              "terms": ["Provider", "Significant Change"],
+              "terms": ["Significant Change"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -8414,22 +8419,25 @@
                 "name": "FedRAMP Significant Change Notification (SCN-CSO-INF)",
                 "url": "https://fedramp.gov/schemas/fedramp-significant-change-notifications-schema-2026-06-24.json"
               },
+              "controls": ["cm-4"],
               "terms": [
                 "Adaptive Change",
                 "Certification Class",
                 "Certification Class Change",
-                "Provider",
                 "Routine Recurring Change",
                 "Significant Change",
                 "Transformative Change"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added cm-4."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["cm-4"]
+              ]
             },
             "SCN-CSO-MAR": {
               "name": "Maintain Audit Records",
@@ -8443,11 +8451,7 @@
                   "Explanation of how FedRAMP can obtain this information."
                 ]
               },
-              "terms": [
-                "Certification Package",
-                "Provider",
-                "Significant Change"
-              ],
+              "terms": ["Certification Package", "Significant Change"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -8483,8 +8487,6 @@
                 "url": "https://fedramp.gov/schemas/fedramp-significant-change-notifications-schema-2026-06-24.json"
               },
               "terms": [
-                "Assessor",
-                "Provider",
                 "Significant Change",
                 "Validation",
                 "Verification",
@@ -8507,7 +8509,7 @@
                   "Explanation of how FedRAMP can obtain this information."
                 ]
               },
-              "terms": ["Certification Data", "Provider", "Significant Change"],
+              "terms": ["Certification Data", "Significant Change"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -8530,7 +8532,7 @@
                 "name": "FedRAMP Significant Change Notifications Schema",
                 "url": "https://fedramp.gov/schemas/fedramp-significant-change-notifications-schema-2026-06-24.json"
               },
-              "terms": ["Provider", "Significant Change"],
+              "terms": ["Significant Change"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -8544,7 +8546,7 @@
               "note": "This allows providers to convey whatever additional information they think is relevant without worrying about negative consequences from not following an exact template.",
               "force": "MAY",
               "affects": ["Providers"],
-              "terms": ["Provider", "Significant Change"],
+              "terms": ["Significant Change"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -8564,7 +8566,7 @@
               "artifacts": {
                 "all": ["Current list of available notification mechanisms"]
               },
-              "terms": ["Agency", "Certification Package", "Provider"],
+              "terms": ["Certification Package"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -8578,21 +8580,24 @@
               "note": "Procedures for emergency changes should be documented in the FedRAMP Certification Package.",
               "force": "MAY",
               "affects": ["Providers"],
+              "controls": ["ir-4.2"],
               "terms": [
                 "All Necessary Parties",
                 "Certification Package",
                 "Incident",
-                "Provider",
                 "Significant Change",
                 "Transformative Change"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ir-4.2."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ir-4.2"]
+              ]
             }
           },
           "ADP": {
@@ -8643,7 +8648,6 @@
               "terms": [
                 "Adaptive Change",
                 "All Necessary Parties",
-                "Provider",
                 "Regularly",
                 "Significant Change",
                 "Vulnerability"
@@ -8699,7 +8703,6 @@
               ],
               "terms": [
                 "Incident",
-                "Provider",
                 "Regularly",
                 "Routine Recurring Change",
                 "Significant Change",
@@ -8737,7 +8740,6 @@
               "terms": [
                 "All Necessary Parties",
                 "Likely",
-                "Provider",
                 "Transformative Change"
               ],
               "updated": [
@@ -8767,11 +8769,7 @@
                   "name": "FedRAMP Certification Data"
                 }
               ],
-              "terms": [
-                "All Necessary Parties",
-                "Provider",
-                "Transformative Change"
-              ],
+              "terms": ["All Necessary Parties", "Transformative Change"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -8799,11 +8797,7 @@
                   "name": "FedRAMP Certification Data"
                 }
               ],
-              "terms": [
-                "All Necessary Parties",
-                "Provider",
-                "Transformative Change"
-              ],
+              "terms": ["All Necessary Parties", "Transformative Change"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -8838,7 +8832,6 @@
               ],
               "terms": [
                 "All Necessary Parties",
-                "Provider",
                 "Transformative Change",
                 "Validation",
                 "Verification",
@@ -8864,11 +8857,7 @@
               },
               "timeframe_type": "bizdays",
               "timeframe_num": 30,
-              "terms": [
-                "Certification Package",
-                "Provider",
-                "Transformative Change"
-              ],
+              "terms": ["Certification Package", "Transformative Change"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -8905,9 +8894,7 @@
                 }
               ],
               "terms": [
-                "Assessor",
                 "Cloud Service Offering",
-                "Provider",
                 "Significant Change",
                 "Transformative Change",
                 "Validation"
@@ -9021,7 +9008,6 @@
               },
               "terms": [
                 "Artifacts",
-                "Provider",
                 "Security Decision Record (SDR)",
                 "Validation",
                 "Verification"
@@ -9043,7 +9029,7 @@
               ],
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Provider", "Security Decision Record (SDR)"],
+              "terms": ["Security Decision Record (SDR)"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -9071,12 +9057,7 @@
                 "name": "FedRAMP Security Decision Record Schema",
                 "url": "https://fedramp.gov/schemas/fedramp-security-decision-record-schema-2026-06-24.json"
               },
-              "terms": [
-                "Persistently",
-                "Provider",
-                "Validation",
-                "Verification"
-              ],
+              "terms": ["Persistently", "Validation", "Verification"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -9092,19 +9073,19 @@
                   "force": "MAY"
                 },
                 "b": {
-                  "statement": "Providers with 20x Class B Certifications MUST also include historical metrics in their Security Decision Record, supplying at least the following information for each applicable Key Security Indicator:",
+                  "statement": "Providers with 20x Class B Certifications SHOULD also include historical metrics in their Security Decision Record, supplying at least the following information for each applicable Key Security Indicator:",
                   "following_information": [
                     "Summary of each metric over the past 30 days",
                     "Summary of metric up to the past year (where available)"
                   ],
-                  "force": "MUST"
+                  "force": "SHOULD"
                 },
                 "c": {
                   "statement": "Providers with 20x Class C Certifications MUST also include historical metrics in their Security Decision Record, supplying at least the following information for each applicable Key Security Indicator:",
                   "following_information": [
                     "Summary of each metric over the past 30 days",
                     "Summary of metric up to the past year (where available)",
-                    "All daily metric data up to the past year (where available)"
+                    "All daily metric data (including status of persistent validation) up to the past year (where available)"
                   ],
                   "force": "MUST"
                 },
@@ -9113,13 +9094,21 @@
                   "force": "MUST"
                 }
               },
+              "note": "For initial FedRAMP Certification, providers will need to have mechanisms in place and agree to meet this requirement in the event the cloud service has not been operating with related metrics available for the required period prior to applying for initial certification.",
               "affects": ["Providers"],
               "schema": {
                 "name": "FedRAMP Security Decision Record Schema",
                 "url": "https://fedramp.gov/schemas/fedramp-security-decision-record-schema-2026-06-24.json"
               },
-              "terms": ["Provider", "Security Decision Record (SDR)"],
+              "terms": [
+                "Initial Certification",
+                "Security Decision Record (SDR)"
+              ],
               "updated": [
+                {
+                  "date": "2026-10-08",
+                  "comment": "Changed MUST to SHOULD for Class B, added note, clarified persistent validation status should be included."
+                },
                 {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -9149,7 +9138,6 @@
               "terms": [
                 "Artifacts",
                 "Cloud Service Offering",
-                "Provider",
                 "Validation",
                 "Verification"
               ],
@@ -9221,24 +9209,6 @@
               ],
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": [
-                "Cloud Service Offering",
-                "FedRAMP Practices",
-                "Incident",
-                "Information Resource",
-                "Persistently",
-                "Promptly",
-                "Provider",
-                "Vulnerability",
-                "Vulnerability Detection",
-                "Vulnerability Response"
-              ],
-              "updated": [
-                {
-                  "date": "2026-06-24",
-                  "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
-                }
-              ],
               "controls": [
                 "au-5.2",
                 "au-6",
@@ -9256,6 +9226,27 @@
                 "si-4.18",
                 "si-4.22",
                 "si-5.1"
+              ],
+              "terms": [
+                "Cloud Service Offering",
+                "FedRAMP Practices",
+                "Incident",
+                "Information Resource",
+                "Persistently",
+                "Promptly",
+                "Vulnerability",
+                "Vulnerability Detection",
+                "Vulnerability Response"
+              ],
+              "updated": [
+                {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added au-5.2, au-6, ca-8, ca-8.1, ca-8.2, ra-5, ra-5.2, ra-5.3, ra-5.4, si-2, si-3, si-4.1, si-4.12, si-4.18, si-4.22, si-5.1."
+                },
+                {
+                  "date": "2026-06-24",
+                  "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
+                }
               ]
             },
             "VDR-CSO-RES": {
@@ -9268,24 +9259,6 @@
               ],
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": [
-                "Cloud Service Offering",
-                "Fully Mitigated Vulnerability",
-                "Partially Mitigated Vulnerability",
-                "Persistently",
-                "Promptly",
-                "Provider",
-                "Remediated Vulnerability",
-                "Vulnerability",
-                "Vulnerability Detection",
-                "Vulnerability Response"
-              ],
-              "updated": [
-                {
-                  "date": "2026-06-24",
-                  "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
-                }
-              ],
               "controls": [
                 "au-5.2",
                 "ir-4.11",
@@ -9293,6 +9266,27 @@
                 "ra-7",
                 "si-2",
                 "si-3"
+              ],
+              "terms": [
+                "Cloud Service Offering",
+                "Fully Mitigated Vulnerability",
+                "Partially Mitigated Vulnerability",
+                "Persistently",
+                "Promptly",
+                "Remediated Vulnerability",
+                "Vulnerability",
+                "Vulnerability Detection",
+                "Vulnerability Response"
+              ],
+              "updated": [
+                {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added au-5.2, ir-4.11, ir-9.3, ra-7, si-2, si-3."
+                },
+                {
+                  "date": "2026-06-24",
+                  "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
+                }
               ]
             },
             "VDR-CSO-FAV": {
@@ -9300,19 +9294,22 @@
               "statement": "Providers MUST treat problems or failures with their vulnerability detection and response processes as vulnerabilities.",
               "force": "MUST",
               "affects": ["Providers"],
+              "controls": ["au-5.2", "si-4", "si-4.1", "si-7.7"],
               "terms": [
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection",
                 "Vulnerability Response"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added au-5.2, si-4, si-4.1, si-7.7."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["au-5.2", "si-4", "si-4.1", "si-7.7"]
+              ]
             },
             "VDR-CSO-DFR": {
               "name": "Design For Resilience",
@@ -9321,7 +9318,6 @@
               "affects": ["Providers"],
               "terms": [
                 "Cloud Service Offering",
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection",
                 "Vulnerability Response"
@@ -9338,97 +9334,112 @@
               "statement": "Providers SHOULD use automated services to improve and streamline vulnerability detection and response.",
               "force": "SHOULD",
               "affects": ["Providers"],
+              "controls": ["ra-5", "si-2.2", "si-3", "si-4.2", "si-4.5"],
               "terms": [
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection",
                 "Vulnerability Response"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ra-5, si-2.2, si-3, si-4.2, si-4.5."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ra-5", "si-2.2", "si-3", "si-4.2", "si-4.5"]
+              ]
             },
             "VDR-CSO-DAC": {
               "name": "Detect After Changes",
               "statement": "Providers SHOULD automatically perform vulnerability detection on representative samples of new or significantly changed information resources.",
               "force": "SHOULD",
               "affects": ["Providers"],
+              "controls": ["ra-5"],
               "terms": [
                 "Information Resource",
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ra-5."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ra-5"]
+              ]
             },
             "VDR-CSO-MSP": {
               "name": "Maintain Security",
               "statement": "Providers SHOULD NOT weaken the security of information resources to facilitate vulnerability scanning, detection, or assessment activities.",
               "force": "SHOULD NOT",
               "affects": ["Providers"],
+              "controls": ["ra-5.5", "si-2"],
               "terms": [
                 "Information Resource",
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ra-5.5, si-2."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ra-5.5", "si-2"]
+              ]
             },
             "VDR-CSO-AKE": {
               "name": "Avoid KEVs",
               "statement": "Providers SHOULD NOT deploy or otherwise activate new machine-based information resources with Known Exploited Vulnerabilities.",
               "force": "SHOULD NOT",
               "affects": ["Providers"],
+              "controls": ["ra-5", "si-5"],
               "terms": [
                 "Information Resource",
                 "Known Exploited Vulnerability (KEV)",
                 "Machine-Based (Information Resources)",
-                "Provider",
                 "Vulnerability"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ra-5, si-5."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ra-5", "si-5"]
+              ]
             },
             "VDR-CSO-SIR": {
               "name": "Sampling",
               "statement": "Providers MAY sample effectively identical information resources, especially machine-based information resources, when performing vulnerability detection UNLESS doing so would decrease the efficiency or effectiveness of vulnerability detection.",
               "force": "MAY",
               "affects": ["Providers"],
+              "controls": ["ra-5.3", "ra-5.5"],
               "terms": [
                 "Information Resource",
                 "Machine-Based (Information Resources)",
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ra-5.3, ra-5.5."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ra-5.3", "ra-5.5"]
+              ]
             }
           },
           "TFR": {
@@ -9437,10 +9448,11 @@
               "statement": "Providers MUST verify and validate the status of non-machine-based information resources at least once every 3 months.",
               "force": "MUST",
               "affects": ["Providers"],
+              "timeframe_type": "months",
+              "timeframe_num": 3,
               "terms": [
                 "Information Resource",
                 "Machine-Based (Information Resources)",
-                "Provider",
                 "Validation",
                 "Verification"
               ],
@@ -9480,22 +9492,25 @@
                 }
               },
               "affects": ["Providers"],
+              "controls": ["si-4.22", "si-7", "si-7.1"],
               "terms": [
                 "Drift",
                 "Information Resource",
                 "Likely",
                 "Persistently",
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added si-4.22, si-7, si-7.1."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["si-4.22", "si-7", "si-7.1"]
+              ]
             },
             "VDR-TFR-PCD": {
               "name": "Persistently Complete Detection",
@@ -9531,7 +9546,6 @@
                 "Information Resource",
                 "Likely",
                 "Persistently",
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection"
               ],
@@ -9848,17 +9862,20 @@
               },
               "related": ["VER-EVA-EPA"],
               "affects": ["Providers"],
+              "controls": ["si-2.3"],
               "terms": [
-                "Agency",
                 "Fully Mitigated Vulnerability",
                 "Likely",
                 "Partially Mitigated Vulnerability",
                 "Potential Agency Impact",
-                "Provider",
                 "Remediated Vulnerability",
                 "Vulnerability"
               ],
               "updated": [
+                {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added si-2.3."
+                },
                 {
                   "date": "2026-07-01",
                   "comment": "Added relevent terms and related controls. No change to the requirement."
@@ -9867,15 +9884,14 @@
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["si-2.3"]
+              ]
             },
             "VDR-TFR-RMN": {
               "name": "Remaining Vulnerabilities",
               "statement": "Providers SHOULD mitigate or remediate remaining vulnerabilities during routine operations as determined necessary by the provider.",
               "force": "SHOULD",
               "affects": ["Providers"],
-              "terms": ["Provider", "Vulnerability"],
+              "terms": ["Vulnerability"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -9890,11 +9906,7 @@
               "reference_url": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk",
               "force": "SHOULD",
               "affects": ["Providers"],
-              "terms": [
-                "Known Exploited Vulnerability (KEV)",
-                "Provider",
-                "Vulnerability"
-              ],
+              "terms": ["Known Exploited Vulnerability (KEV)", "Vulnerability"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -9935,7 +9947,6 @@
                 "Information Resource",
                 "Machine-Based (Information Resources)",
                 "Persistently",
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection"
               ],
@@ -9976,7 +9987,6 @@
               "terms": [
                 "Information Resource",
                 "Machine-Based (Information Resources)",
-                "Provider",
                 "Validation",
                 "Verification"
               ],
@@ -10017,7 +10027,6 @@
               "terms": [
                 "Information Resource",
                 "Machine-Based (Information Resources)",
-                "Provider",
                 "Validation",
                 "Verification"
               ],
@@ -10114,7 +10123,7 @@
               "statement": "FedRAMP MAY require providers to share additional vulnerability information, alternative reports, or to report at an alternative frequency as a condition of a FedRAMP Corrective Action Plan or other agreements with federal agencies.",
               "force": "MAY",
               "affects": ["FedRAMP"],
-              "terms": ["Agency", "Provider", "Vulnerability"],
+              "terms": ["Vulnerability"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -10127,12 +10136,7 @@
               "statement": "FedRAMP MAY require providers to share additional information or details about vulnerabilities, including sensitive information that would likely lead to exploitation, as part of review, response or investigation by necessary parties.",
               "force": "MAY",
               "affects": ["FedRAMP"],
-              "terms": [
-                "Likely",
-                "Provider",
-                "Vulnerability",
-                "Vulnerability Response"
-              ],
+              "terms": ["Likely", "Vulnerability", "Vulnerability Response"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -10150,9 +10154,7 @@
               "affects": ["Agencies"],
               "terms": [
                 "Accepted Vulnerability",
-                "Agency",
                 "Potential Agency Impact",
-                "Provider",
                 "Vulnerability"
               ],
               "updated": [
@@ -10169,9 +10171,7 @@
               "affects": ["Agencies"],
               "terms": [
                 "Accepted Vulnerability",
-                "Agency",
                 "FedRAMP Certified",
-                "Provider",
                 "Vulnerability"
               ],
               "updated": [
@@ -10196,7 +10196,6 @@
                 "Cloud Service Offering",
                 "Likely",
                 "Likely Exploitable Vulnerability (LEV)",
-                "Provider",
                 "Regularly",
                 "Vulnerability",
                 "Vulnerability Detection"
@@ -10223,7 +10222,6 @@
                 "Cloud Service Offering",
                 "FedRAMP Certified",
                 "Internet-Reachable Vulnerability (IRV)",
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection"
               ],
@@ -10236,8 +10234,9 @@
             },
             "VER-EVA-EPA": {
               "name": "Estimate Potential Agency Impact",
-              "statement": "Providers MUST evaluate detected vulnerabilities, considering the context of the cloud service offering, to estimate the potential agency impact of exploitation on government customers AND assign one of the following Potential Agency Impact N-ratings (PAIN):",
+              "statement": "Providers MUST evaluate detected vulnerabilities, considering the context of the cloud service offering, to estimate the likely potential agency impact of exploitation on government customers AND assign one of the following Potential Agency Impact N-ratings (PAIN):",
               "following_information_bullets": [
+                "**N0**: Exploitation is extremely unlikely to have any adverse effects on agencies that use the cloud service offering.",
                 "**N1**: Exploitation could be expected to have minimal customer effects on one or more agencies that use the cloud service offering.",
                 "**N2**: Exploitation could be expected to have narrow customer effects on one or more agencies that use the cloud service offering.",
                 "**N3**: Exploitation could be expected to have a disruptive customer effect on one agency that uses the cloud service offering.",
@@ -10246,32 +10245,39 @@
               ],
               "force": "MUST",
               "affects": ["Providers"],
+              "controls": ["ra-3"],
               "terms": [
-                "Agency",
                 "Cloud Service Offering",
                 "Debilitating Customer Effect",
                 "Disruptive Customer Effect",
+                "Likely",
                 "Minimal Customer Effect",
                 "Narrow Customer Effect",
                 "Potential Agency Impact",
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ra-3."
+                },
+                {
+                  "date": "2026-10-05",
+                  "comment": "Clarified that likely potential agency impact should be calculated; added PAIN0 to clarify that likely potential agency impact can be entirely mitigated/remediated."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ra-3"]
+              ]
             },
             "VER-EVA-AIA": {
               "name": "Assume It's Automatable",
               "statement": "Providers MUST assume the exploitation of vulnerabilities can be automated UNLESS they have evidence proving otherwise.",
               "force": "MUST",
               "affects": ["Providers"],
-              "terms": ["Provider", "Vulnerability"],
+              "terms": ["Vulnerability"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -10287,7 +10293,6 @@
               "terms": [
                 "Cloud Service Offering",
                 "Information Resource",
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection",
                 "Vulnerability Response"
@@ -10307,7 +10312,6 @@
               "terms": [
                 "Cloud Service Offering",
                 "False Positive Vulnerability",
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection"
               ],
@@ -10333,21 +10337,24 @@
               ],
               "force": "SHOULD",
               "affects": ["Providers"],
+              "controls": ["ra-9"],
               "terms": [
                 "Cloud Service Offering",
                 "Fully Mitigated Vulnerability",
                 "Likely",
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection"
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added ra-9."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["ra-9"]
+              ]
             }
           },
           "RPT": {
@@ -10360,11 +10367,11 @@
                 "name": "FedRAMP Vulnerability Detail Report (VER-RPT-VDT)",
                 "url": "https://fedramp.gov/schemas/fedramp-vulnerability-detail-report-schema-2026-06-24.json"
               },
+              "controls": ["si-7.2"],
               "terms": [
                 "All Necessary Parties",
                 "Certification Data",
                 "Persistently",
-                "Provider",
                 "Validation",
                 "Verification",
                 "Vulnerability",
@@ -10373,11 +10380,14 @@
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added si-7.2."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["si-7.2"]
+              ]
             },
             "VER-RPT-VDT": {
               "name": "Vulnerability Details",
@@ -10406,9 +10416,9 @@
                 "name": "FedRAMP Vulnerability Detail Report (VER-RPT-VDT)",
                 "url": "https://fedramp.gov/schemas/fedramp-vulnerability-detail-report-schema-2026-06-24.json"
               },
+              "controls": ["si-2.3"],
               "terms": [
                 "Accepted Vulnerability",
-                "Agency",
                 "Cloud Service Offering",
                 "Federal Customer Data",
                 "Internet-Reachable Vulnerability (IRV)",
@@ -10416,7 +10426,6 @@
                 "Likely Exploitable Vulnerability (LEV)",
                 "Overdue Vulnerability",
                 "Potential Agency Impact",
-                "Provider",
                 "Responsibly",
                 "Vulnerability",
                 "Vulnerability Detection",
@@ -10424,11 +10433,14 @@
               ],
               "updated": [
                 {
+                  "date": "2026-10-13",
+                  "comment": "Updated control mappings: added si-2.3."
+                },
+                {
                   "date": "2026-06-24",
                   "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
                 }
-              ],
-              "controls": ["si-2.3"]
+              ]
             },
             "VER-RPT-AVI": {
               "name": "Accepted Vulnerability Info",
@@ -10456,14 +10468,12 @@
               },
               "terms": [
                 "Accepted Vulnerability",
-                "Agency",
                 "Cloud Service Offering",
                 "Federal Customer Data",
                 "Internet-Reachable Vulnerability (IRV)",
                 "Likely",
                 "Likely Exploitable Vulnerability (LEV)",
                 "Potential Agency Impact",
-                "Provider",
                 "Responsibly",
                 "Vulnerability",
                 "Vulnerability Detection",
@@ -10482,12 +10492,7 @@
               "note": "This requirement will be superseded in the event of formal action related to an investigation or corrective action plan.",
               "force": "MUST NOT",
               "affects": ["Providers"],
-              "terms": [
-                "All Necessary Parties",
-                "Likely",
-                "Provider",
-                "Vulnerability"
-              ],
+              "terms": ["All Necessary Parties", "Likely", "Vulnerability"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -10502,7 +10507,6 @@
               "affects": ["Providers"],
               "terms": [
                 "Cloud Service Offering",
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection",
                 "Vulnerability Response"
@@ -10519,7 +10523,7 @@
               "statement": "Providers MAY responsibly disclose vulnerabilities publicly or with other parties if the provider determines doing so will NOT likely lead to exploitation.",
               "force": "MAY",
               "affects": ["Providers"],
-              "terms": ["Likely", "Provider", "Responsibly", "Vulnerability"],
+              "terms": ["Likely", "Responsibly", "Vulnerability"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -10543,7 +10547,6 @@
               "timeframe_num": 1,
               "terms": [
                 "All Necessary Parties",
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection",
                 "Vulnerability Response"
@@ -10562,7 +10565,7 @@
               "affects": ["Providers"],
               "timeframe_type": "days",
               "timeframe_num": 192,
-              "terms": ["Accepted Vulnerability", "Provider", "Vulnerability"],
+              "terms": ["Accepted Vulnerability", "Vulnerability"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -10629,7 +10632,6 @@
               "terms": [
                 "All Necessary Parties",
                 "Persistently",
-                "Provider",
                 "Vulnerability",
                 "Vulnerability Detection",
                 "Vulnerability Response"
@@ -10670,7 +10672,7 @@
                 }
               },
               "affects": ["Providers"],
-              "terms": ["Provider", "Vulnerability", "Vulnerability Detection"],
+              "terms": ["Vulnerability", "Vulnerability Detection"],
               "updated": [
                 {
                   "date": "2026-06-24",
@@ -10700,14 +10702,12 @@
               },
               "affects": ["Providers"],
               "terms": [
-                "Agency",
                 "FedRAMP Reportable Incident",
                 "Incident",
                 "Likely",
                 "Likely Exploitable Vulnerability (LEV)",
                 "Partially Mitigated Vulnerability",
                 "Potential Agency Impact",
-                "Provider",
                 "Vulnerability"
               ],
               "updated": [
@@ -10739,14 +10739,12 @@
               },
               "affects": ["Providers"],
               "terms": [
-                "Agency",
                 "FedRAMP Reportable Incident",
                 "Incident",
                 "Likely",
                 "Likely Exploitable Vulnerability (LEV)",
                 "Partially Mitigated Vulnerability",
                 "Potential Agency Impact",
-                "Provider",
                 "Vulnerability"
               ],
               "updated": [
@@ -10797,6 +10795,10 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added cm-11, cp-3.1, ir-2.1, ir-2.2, ir-9.2, ir-9.4, pl-4, pl-4.1."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -10827,6 +10829,10 @@
             "cm-8.3"
           ],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ca-7.4, cm-3.1, cm-3.6; removed ma-2."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -10875,23 +10881,15 @@
           "controls": ["cm-3", "cm-3.2", "cm-4.2", "cm-6.2", "ir-9.4", "si-2"],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added cm-6.2, ir-9.4."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
           ],
           "terms": ["Persistently", "Validation"]
-        },
-        "KSI-CMT-TBD": {
-          "controls": ["cm-4.1"],
-          "name": "Testing Before Deployment",
-          "statement": "Testing environments are persistently used to verify and validate changes prior to production deployment.",
-          "terms": [],
-          "updated": [
-            {
-              "comment": "Added via KSIM application",
-              "date": "2026-09-28"
-            }
-          ]
         }
       }
     },
@@ -10907,6 +10905,10 @@
           "statement": "The functionality and privileges for infrastructure and services are strictly defined.",
           "controls": ["cm-2", "cm-8.4", "cp-10.4", "ir-9.4", "si-3"],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added cm-8.4, cp-10.4, ir-9.4."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -10930,6 +10932,10 @@
             "si-7.7"
           ],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added cm-11, cm-6.2, cp-10.4, ir-9.4, sc-24, sc-7.18, si-4.22, si-7, si-7.1, si-7.5, si-7.7; removed ca-7.1."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -10955,6 +10961,10 @@
           "controls": ["ac-17.3", "cm-2", "pl-10", "sc-7.18"],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added sc-7.18."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -10962,8 +10972,7 @@
           "terms": [
             "Information Resource",
             "Machine-Based (Information Resources)",
-            "Persistently",
-            "Provider"
+            "Persistently"
           ]
         },
         "KSI-CNA-MAT": {
@@ -10988,6 +10997,10 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added sc-7.18."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -11003,6 +11016,10 @@
           "statement": "Machine-based information resources are persistently reviewed to ensure they are appropriately optimized for high availability and rapid recovery.",
           "controls": ["cp-2.5", "sc-12.1"],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added cp-2.5, sc-12.1."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -11034,6 +11051,10 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added sc-7.10, sc-7.18, sc-7.20, sc-7.21, si-10, si-4.11, si-4.18, si-4.4."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -11049,6 +11070,10 @@
           "statement": "The effectiveness of protection against denial of service attacks and other unwanted activity for machine-based information resources is persistently reviewed.",
           "controls": ["ir-4.2", "sc-5", "sc-7.18", "si-8", "si-8.2"],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ir-4.2, sc-7.18."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -11078,6 +11103,10 @@
             "sc-8"
           ],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ac-4.21, cm-11, sc-7.20, sc-7.21."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -11111,6 +11140,10 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ia-8.4."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -11139,6 +11172,10 @@
             "sc-23"
           ],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ia-2.6, ia-5.8, ia-8.2, ia-8.4."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -11204,6 +11241,10 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ac-18.4, ac-2.11, ac-2.7, ac-2.9, ac-21, ac-6.3, ac-6.8, au-12.3, au-6.7, cm-5.1, cm-5.5, cm-7.2, ir-4.6, ir-9.4, ra-5.5, sc-2, sc-3, si-4.19."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -11268,6 +11309,10 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ac-17.4, ac-2.11, ac-2.7, ac-21, ac-6.3, ac-6.8, au-10, au-12.3, ca-3.6, cm-5.1, cm-5.5, ir-4.6, sc-3."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -11290,6 +11335,10 @@
             "ra-5.5"
           ],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ac-2.9, au-10, ia-2.5."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -11324,35 +11373,15 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ac-2.11, ac-2.12, au-6.5, cm-5.1, cm-6.2, ir-4.2, ir-4.6, si-4, si-4.1, si-4.19, si-4.20, si-4.22, si-4.4."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
           ],
           "terms": ["Vulnerability Response"]
-        },
-        "KSI-IAM-MPS": {
-          "controls": ["si-4.19", "si-4.20"],
-          "name": "Monitoring Personnel Suitability",
-          "statement": "Access, privileges, suitability, and activities of privileged or high risk individuals is persistently reviewed and evaluated for bad or dumb shit.",
-          "terms": [],
-          "updated": [
-            {
-              "comment": "Added via KSIM application",
-              "date": "2026-09-28"
-            }
-          ]
-        },
-        "KSI-IAM-PIM": {
-          "controls": ["ia-12.4", "si-4.19"],
-          "name": "Personnel Identity Management",
-          "statement": "Background and identity of people is persistently verified and validated based on their privileges and assigned roles.",
-          "terms": [],
-          "updated": [
-            {
-              "comment": "Added via KSIM application",
-              "date": "2026-09-28"
-            }
-          ]
         }
       }
     },
@@ -11368,6 +11397,10 @@
           "statement": "Incident after action reports are generated and lessons learned are persistently incorporated.",
           "controls": ["ir-3", "ir-4", "ir-4.1", "ir-5.1", "ir-8", "ir-9.3"],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ir-5.1, ir-9.3."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -11394,6 +11427,10 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ir-4.11, ir-9.3."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -11416,23 +11453,15 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ir-4.11, ir-4.4, ir-5.1, ra-5.8."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
           ],
           "terms": ["Incident", "Persistently", "Vulnerability"]
-        },
-        "KSI-INR-CFA": {
-          "controls": ["ra-5.8"],
-          "name": "Conduct Forensic Assessments",
-          "statement": "Forensic assessment for vulnerabilities that may reasonably have been exploited before remediation are conducted persistently. ",
-          "terms": [],
-          "updated": [
-            {
-              "comment": "Added via KSIM application",
-              "date": "2026-09-28"
-            }
-          ]
         }
       }
     },
@@ -11447,6 +11476,10 @@
           "name": "Authorizing Log Access",
           "controls": ["au-12.3", "au-6.7", "si-11"],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added au-12.3, au-6.7."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -11475,6 +11508,10 @@
             "si-7.7"
           ],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ac-19, cm-6.1, ra-3."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -11508,6 +11545,10 @@
             "si-7.7"
           ],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added au-10, au-7, cm-5.1, ir-9.4, si-4.19, si-4.20."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -11544,6 +11585,10 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added au-12.1, au-5.1, au-6.4, au-6.5, si-4.16; removed si-7.7."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -11566,6 +11611,10 @@
             "si-4.4"
           ],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added au-7, ra-5.8, si-4.19."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -11598,6 +11647,10 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added cm-8.2, cm-8.4."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -11614,7 +11667,7 @@
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
           ],
-          "terms": ["Persistently", "Provider"]
+          "terms": ["Persistently"]
         },
         "KSI-PIY-RIS": {
           "name": "Reviewing Investments in Security",
@@ -11634,11 +11687,15 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ca-2.2, ir-4.11."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
           ],
-          "terms": ["Persistently", "Provider"]
+          "terms": ["Persistently"]
         },
         "KSI-PIY-RSD": {
           "name": "Reviewing Security in the SDLC",
@@ -11661,6 +11718,10 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ia-5.7, ra-9."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -11677,7 +11738,7 @@
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
           ],
-          "terms": ["Persistently", "Provider", "Vulnerability"]
+          "terms": ["Persistently", "Vulnerability"]
         }
       }
     },
@@ -11693,6 +11754,10 @@
           "statement": "The alignment of machine-based information resource backups with defined recovery objectives is persistently reviewed.",
           "controls": ["cm-2.3", "cp-6", "cp-9", "cp-10", "cp-10.2"],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: removed si-12."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -11743,7 +11808,7 @@
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
           ],
-          "terms": ["Persistently", "Provider"]
+          "terms": ["Persistently"]
         },
         "KSI-RPL-TRC": {
           "name": "Testing Recovery Capabilities",
@@ -11764,23 +11829,15 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ir-9.3, sc-12.1."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
           ],
           "terms": ["Incident", "Persistently"]
-        },
-        "KSI-RPL-WMK": {
-          "controls": ["sc-12.1"],
-          "name": "Where are my keys?",
-          "statement": "The ability to make critical information available in the event of cryptographic key loss or failure is persistently reviewed",
-          "terms": [],
-          "updated": [
-            {
-              "comment": "Added via KSIM application",
-              "date": "2026-09-28"
-            }
-          ]
         }
       }
     },
@@ -11829,6 +11886,10 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ac-19, ra-3, sa-11.1, sa-11.2, sa-15, sa-16, sa-17, sa-21, sa-4, sa-4.1, sa-4.2, sa-4.5, sa-4.9, sa-9.1, sa-9.2, sa-9.5, si-7.15, sr-2, sr-3."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -11855,6 +11916,10 @@
             "sr-8"
           ],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ac-19, ca-2.3, ra-3, sr-3."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -11893,6 +11958,10 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ac-6.8, sc-45, sc-45.1, sc-7.18."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -11916,6 +11985,10 @@
             "sc-17"
           ],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added sc-12.1."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -11942,6 +12015,10 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ca-7.4, cm-5.5, ir-9.4, ra-3; removed ma-2."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -11952,6 +12029,10 @@
           "name": "Preventing Residual Risk",
           "controls": ["ac-19", "ir-9.4", "sc-12.1", "sc-4", "sc-7.18"],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ac-19, ir-9.4, sc-12.1, sc-7.18."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -11977,6 +12058,10 @@
           "controls": ["ir-9", "si-12.3", "si-18.4", "si-8", "si-8.2"],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ir-9, si-8, si-8.2."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -11989,7 +12074,7 @@
               "statement": "Unwanted federal customer data is removed promptly when requested by an agency in alignment with customer agreements, including from backups if appropriate; this typically applies when a customer spills information or when a customer seeks to remove information from a service due to a change in usage."
             }
           },
-          "terms": ["Agency", "Federal Customer Data", "Promptly"]
+          "terms": ["Federal Customer Data", "Promptly"]
         },
         "KSI-SVC-SIN": {
           "name": "Securing Information",
@@ -12017,6 +12102,10 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ac-11, ac-11.1, ac-19.5, ac-21, ir-9.4, sc-4, sc-7.18, si-4.18; removed ac-1."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -12034,6 +12123,10 @@
             "si-7.1"
           ],
           "updated": [
+            {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ac-10, ac-17.4, ac-18, ac-19, si-4.22."
+            },
             {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
@@ -12075,6 +12168,10 @@
           ],
           "updated": [
             {
+              "date": "2026-10-13",
+              "comment": "Updated control mappings: added ac-17.4, ac-18, ac-19, au-9.3, cm-14, si-7.15, sr-11."
+            },
+            {
               "date": "2026-06-24",
               "comment": "Official launch of the FedRAMP Consolidated Rules for 2026."
             }
@@ -12083,45 +12180,6 @@
             "Information Resource",
             "Machine-Based (Information Resources)",
             "Validation"
-          ]
-        },
-        "KSI-SVC-DPI": {
-          "controls": ["si-4.10"],
-          "name": "Monitoring Encrypted Data",
-          "statement": "Encrypted data is inspected during transmission for malicious content and compliance with organizational data policies.",
-          "terms": [],
-          "updated": [
-            {
-              "comment": "Added via KSIM application",
-              "date": "2026-09-22"
-            }
-          ]
-        },
-        "KSI-SVC-UAM": {
-          "controls": [
-            "au-6.1",
-            "au-7.1",
-            "cm-3.1",
-            "cm-5.1",
-            "cm-6.1",
-            "cm-8.2",
-            "ir-2.2",
-            "ir-5.1",
-            "ps-4.2",
-            "si-2.2",
-            "si-4.12",
-            "si-5.1",
-            "si-7.2",
-            "si-7.5"
-          ],
-          "name": "Use Automated Methods",
-          "statement": "Processes critical to the security of the system are supported by automated tools to ensure compliance and consistency.",
-          "terms": [],
-          "updated": [
-            {
-              "comment": "Added via KSIM application",
-              "date": "2026-09-23"
-            }
           ]
         }
       }

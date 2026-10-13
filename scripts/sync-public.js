@@ -22,11 +22,9 @@ async function listRootJsonFiles(repo) {
   return items.filter(i => i.type === 'file' && i.name.endsWith('.json'));
 }
 
-// Pinned to a specific commit (rather than a moving branch) so a re-sync is
-// reproducible and doesn't silently pull in unreviewed upstream changes. This
-// single file also carries the Rev5 NIST control baseline (FRR.FRC.data.rev5.CSF
+// This single file also carries the Rev5 NIST control baseline (FRR.FRC.data.rev5.CSF
 // ['FRC-CSF-BSL']), so no separate control-baseline source is needed.
-const FRMR_URL = 'https://raw.githubusercontent.com/FedRAMP/rules/12fe1b60f578ab448c26d143baac99d16d8bfe14/fedramp-consolidated-rules.json';
+const FRMR_URL = 'https://raw.githubusercontent.com/FedRAMP/rules/refs/heads/main/fedramp-consolidated-rules.json';
 
 async function fetchFile(url) {
   const res = await fetch(url);

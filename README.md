@@ -28,7 +28,7 @@ Everything runs in the browser; files never leave the machine.
 ## Commands
 
 ```bash
-bun run sync         # pull schemas + FRMR rules into public/
+bun run sync         # pull the latest schemas + FRMR rules (main branch) into public/
 bun run sync:clean   # purge public/fedramp-*.json first, then sync
 bun run sync:titles  # rebuild public/nist-800-53-rev5-control-titles.json from NIST's OSCAL catalog (part of sync)
 bun run build        # production bundle → dist/
