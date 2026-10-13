@@ -23,5 +23,5 @@ A second view (toolbar toggle **FedRAMP / Agency**) needs no opened file: it ren
 
 ## Testing
 
-- `bun run test` — Vitest (`tests/`): renderer output, schema detection against `public/samples/*`, `$ref` inlining, enum patching. Per-sample detection checks are skipped for any sample that no longer carries its own schema's required keys (fixture drift after a schema sync).
+- `bun run test` — Vitest (`tests/`): renderer output, schema detection against the sample documents in `tests/fixtures/`, `$ref` inlining, enum patching. Per-sample detection checks are skipped for any sample that no longer carries its own schema's required keys (fixture drift after a schema sync).
 - `bun run test:e2e` — Playwright (`e2e/`), boots `bun run dev` on port 5174: every sample renders with no console errors, auto-detection, manual type override, invalid-JSON handling.

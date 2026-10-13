@@ -6,6 +6,8 @@ import { SCHEMA_CATALOG } from '../src/config.js';
 
 const PUBLIC = resolve(import.meta.dirname, '../public');
 const readJson = file => JSON.parse(readFileSync(resolve(PUBLIC, file), 'utf8'));
+const FIXTURES = resolve(import.meta.dirname, 'fixtures');
+const readSample = file => JSON.parse(readFileSync(resolve(FIXTURES, file.replace(/\.json$/, '.sample.json')), 'utf8'));
 
 const ENTRIES = SCHEMA_CATALOG.map(e => ({ ...e, schema: readJson(e.file) }));
 
@@ -15,7 +17,7 @@ describe('detectSchema', () => {
     // keys — a sample that has drifted behind a schema update can legitimately
     // look more like another document type. Asserts the correct schema ties for
     // the best score, since some document types share identical top-level keys.
-    const sample = readJson(`samples/${entry.file.replace(/\.json$/, '.sample.json')}`);
+    const sample = readSample(entry.file);
     const current = (readJson(entry.file).required || []).every(k => k in sample);
     it.skipIf(!current)(`ranks ${entry.label} best for its sample fixture`, () => {
       const detected = detectSchema(ENTRIES, sample);
@@ -33,7 +35,7 @@ describe('detectSchema', () => {
 
   it('detects the SDR from its sample fixture', () => {
     const sdr = SCHEMA_CATALOG[0];
-    const sample = readJson(`samples/${sdr.file.replace(/\.json$/, '.sample.json')}`);
+    const sample = readSample(sdr.file);
     expect(detectSchema(ENTRIES, sample).file).toBe(sdr.file);
   });
 

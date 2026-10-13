@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import path from 'path';
 import { SCHEMA_CATALOG } from '../src/config.js';
 
-const SAMPLES_DIR = path.resolve(import.meta.dirname, '../public/samples');
+const SAMPLES_DIR = path.resolve(import.meta.dirname, '../tests/fixtures');
 
 function trackErrors(page) {
   const errors = [];

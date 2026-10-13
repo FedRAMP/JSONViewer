@@ -35,7 +35,7 @@ async function fetchFile(url) {
 mkdirSync('public', { recursive: true });
 
 // --clean wipes only the files this script itself owns (top-level public/*.json
-// matching fedramp-*), never public/samples/ — this is not atomic: if the fetch
+// matching fedramp-*) — this is not atomic: if the fetch
 // loop below fails partway, public/ is left missing files until a successful re-run.
 if (clean) {
   const removed = readdirSync('public', { withFileTypes: true })
