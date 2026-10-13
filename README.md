@@ -2,6 +2,8 @@
 
 A small, read-only web app that opens a FedRAMP 20x JSON file (SDR, COP, Ongoing Certification Report, Incident Report, and the rest of the [fedramp/schemas](https://github.com/fedramp/schemas) catalog — see `src/config.js`) and renders it as a formatted, human-readable document.
 
+**Live site:** https://preview.fedramp.gov/JSONViewer/
+
 > [!IMPORTANT]
 > **Disclaimer:** This is a reference implementation. It is not provided as an official FedRAMP tool. FedRAMP makes no warranty or assertion that this tool will be updated, fixed, enhanced, or continue to be hosted here.
 

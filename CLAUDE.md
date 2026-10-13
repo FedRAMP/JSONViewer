@@ -17,6 +17,10 @@ A second view (toolbar toggle **FedRAMP / Agency**) needs no opened file: it ren
 
 `config.js`, `schemaRefs.js`, `frmr.js`, `rv5.js`, `schemaPatch.js` and `scripts/sync-public.js` are copies of the editor's versions; keep them in step manually when either side changes. Intentional divergences: the viewer's `patchFRMRSchema` also patches `ksiId` with KSI titles (the editor keeps `ksiId` free-text), and the viewer-only `extractRuleForces`/`formatForceByClass` read each rule's `force` (directly, or per class under `varies_by_class`, collapsed like "A: SHOULD · B–D: MUST") for the force-of-rule badge in item summaries (`options.ruleForces`). The viewer's `scripts/sync-public.js` pulls FRMR from the `main` branch of `FedRAMP/rules` rather than a pinned commit, so each `bun run sync` picks up the latest rules (review the `public/` diff before committing). `extractRuleTexts` (built on the shared `ruleStatements`/`ruleForce` helpers in `frmr.js`) feeds `options.ruleTexts`, which adds a collapsible "FedRAMP Rule" section (statement(s), per class when they vary, plus any `following_information`) at the top of each matching item card in the FedRAMP view; it starts closed and opens with Expand all. `renderRuleText` in `htmlPreview.js` renders that text for both views. The Agency view doesn't pass `ruleTexts` to `buildItemCardIndex`, since its rule cards already show the text.
 
+## Deployment
+
+`.github/workflows/deploy-pages.yml` runs the unit tests, builds, and deploys `dist/` to GitHub Pages on every push to `master` (live at https://preview.fedramp.gov/JSONViewer/). The build's base path comes from `actions/configure-pages` (`VITE_BASE_URL`), so it follows the Pages URL; keep all runtime fetches relative. `dist/` is gitignored.
+
 ## Testing
 
 - `bun run test` — Vitest (`tests/`): renderer output, schema detection against `public/samples/*`, `$ref` inlining, enum patching. Per-sample detection checks are skipped for any sample that no longer carries its own schema's required keys (fixture drift after a schema sync).
