@@ -18,6 +18,8 @@ Click **Open JSON File** (or drag a file onto the page). The document type is de
 
 Switch to **Agency** in the toolbar to browse `public/AgencyControlGuidance.controls.merged.json`: every NIST control (grouped by family) with its agency actions, FedRAMP guidance, and notes per part, plus each FedRAMP requirement (FRR) and Key Security Indicator (KSI) that the FRMR rules map to that control, with its force and statement.
 
+Switch to **JSON** (once a file is open) to see the file's raw JSON, pretty-printed, with every object and array collapsible.
+
 ## How it works
 
 - On startup, every schema in `SCHEMA_CATALOG` is fetched (local `public/` copy first, falling back to GitHub raw), its cross-file `$ref`s into the common-definitions schema are inlined, and the requirement-ID / NIST-control-ID enums are patched from `public/fedramp-consolidated-rules.json` so IDs render alongside their human-readable titles.

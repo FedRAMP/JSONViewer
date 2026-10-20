@@ -116,6 +116,33 @@ body {
 .sdr-missing { margin: 8px 0 0; color: #9ca3af; font-size: 0.85rem; font-style: italic; }
 .rule-count-none { background: none; color: #9ca3af; font-weight: 400; }
 
+/* Raw JSON view */
+.json-view {
+  margin: 16px 20px 0;
+  padding: 12px 16px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+.json-line { padding-left: 16px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.json-view summary { white-space: pre-wrap; overflow-wrap: anywhere; }
+.json-view summary::before { width: 12px; margin-right: 4px; }
+.json-children { margin-left: 7px; padding-left: 9px; border-left: 1px solid #e5e7eb; }
+.json-node[open] > summary .json-folded { display: none; }
+.json-node[open] > summary .json-count { display: none; }
+.json-count { margin-left: 8px; color: #9ca3af; font-size: 0.8em; font-style: italic; }
+.json-ellipsis { color: #6b7280; padding: 0 2px; }
+.json-key { color: #1a3a5c; font-weight: 600; }
+.json-string { color: #067d3a; }
+.json-number { color: #1d4ed8; }
+.json-boolean { color: #9a3412; }
+.json-null { color: #6b7280; font-style: italic; }
+.json-punct { color: #4b5563; }
+
 /* Shared disclosure styling for every collapsible level. */
 details > summary { list-style: none; cursor: pointer; user-select: none; }
 details > summary::-webkit-details-marker { display: none; }

@@ -4,6 +4,7 @@ import { fetchRaw, fetchSchema, simpleFetch } from './utils/schemaLoader';
 import { detectSchema } from './utils/detectSchema';
 import { buildItemCardIndex, buildPreviewHtml } from './utils/htmlPreview';
 import { buildControlGuidanceHtml, extractControlRuleMap } from './utils/controlGuidance';
+import { buildJsonHtml } from './utils/jsonView';
 import { SCHEMA_CATALOG } from './config';
 
 const FRMR_URL = 'fedramp-consolidated-rules.json';
@@ -26,6 +27,7 @@ const guidanceControls = document.getElementById('guidance-controls');
 const baselineSelect = document.getElementById('baseline-select');
 const viewDocumentBtn = document.getElementById('view-document');
 const viewGuidanceBtn = document.getElementById('view-guidance');
+const viewJsonBtn = document.getElementById('view-json');
 
 // Catalog entries that loaded successfully, each with its patched schema.
 let entries = [];
@@ -38,7 +40,7 @@ let ruleTexts = {};
 // with every <details> open or closed. null = default (requirement/KSI cards
 // closed, everything else open).
 let expandMode = null; // null | 'expanded' | 'collapsed'
-let view = 'document'; // 'document' | 'guidance'
+let view = 'document'; // 'document' | 'guidance' | 'json'
 let guidanceData = null;
 let controlRules = {};
 let controlTitles = {};
@@ -62,12 +64,12 @@ function setView(next) {
   if (next === view) return;
   view = next;
   expandMode = null;
-  viewDocumentBtn.classList.toggle('active', view === 'document');
-  viewGuidanceBtn.classList.toggle('active', view === 'guidance');
-  viewDocumentBtn.setAttribute('aria-pressed', String(view === 'document'));
-  viewGuidanceBtn.setAttribute('aria-pressed', String(view === 'guidance'));
-  documentControls.hidden = view !== 'document';
-  fileNameEl.hidden = view !== 'document';
+  for (const [btn, name] of [[viewDocumentBtn, 'document'], [viewGuidanceBtn, 'guidance'], [viewJsonBtn, 'json']]) {
+    btn.classList.toggle('active', view === name);
+    btn.setAttribute('aria-pressed', String(view === name));
+  }
+  documentControls.hidden = view === 'guidance';
+  fileNameEl.hidden = view === 'guidance';
   guidanceControls.hidden = view !== 'guidance';
   render();
 }
@@ -106,6 +108,12 @@ function renderGuidance() {
 function render() {
   if (view === 'guidance' && guidanceData) {
     renderGuidance();
+    return;
+  }
+  if (view === 'json' && currentFileName) {
+    expandBtn.disabled = false;
+    collapseBtn.disabled = false;
+    showPreview(buildJsonHtml(currentData, { title: currentFileName, collapsed: expandMode === 'collapsed' }));
     return;
   }
   const entry = selectedEntry();
@@ -186,7 +194,9 @@ function loadFile(file) {
     const detected = detectSchema(entries, data);
     if (detected) schemaSelect.value = detected.file;
     expandMode = null;
-    if (view !== 'document') setView('document');
+    viewJsonBtn.disabled = false;
+    viewJsonBtn.title = '';
+    if (view === 'guidance') setView('document');
     else render();
   };
   reader.onerror = () => showStatus(`Could not read ${file.name}.`, true);
@@ -202,6 +212,7 @@ fileInput.addEventListener('change', e => {
 schemaSelect.addEventListener('change', render);
 viewDocumentBtn.addEventListener('click', () => setView('document'));
 viewGuidanceBtn.addEventListener('click', () => setView('guidance'));
+viewJsonBtn.addEventListener('click', () => setView('json'));
 expandBtn.addEventListener('click', () => { expandMode = 'expanded'; render(); });
 collapseBtn.addEventListener('click', () => { expandMode = 'collapsed'; render(); });
 baselineSelect.addEventListener('change', render);

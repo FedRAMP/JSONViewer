@@ -117,6 +117,28 @@ test('reports invalid JSON without crashing', async ({ page }) => {
   await expect(page.locator('#status')).toContainText('broken.json is not valid JSON.');
 });
 
+test('JSON view shows the raw file, collapsible', async ({ page }) => {
+  const errors = trackErrors(page);
+  await ready(page);
+  const jsonBtn = page.getByRole('button', { name: 'JSON', exact: true });
+  await expect(jsonBtn).toBeDisabled();
+  await page.locator('#file-input').setInputFiles({
+    name: 'raw.json', mimeType: 'application/json', buffer: Buffer.from('{"a": {"b": [1, "two"]}}'),
+  });
+  await jsonBtn.click();
+  const frame = page.frameLocator('[data-testid="html-preview-iframe"]');
+  await expect(frame.locator('.page-header h1')).toHaveText('raw.json');
+  await expect(frame.locator('.json-string')).toHaveText('"two"');
+  await expect(frame.locator('details.json-node[open]')).toHaveCount(3);
+
+  await page.getByRole('button', { name: 'Collapse all' }).click();
+  await expect(frame.locator('details.json-node[open]')).toHaveCount(1);
+  await expect(frame.locator('.json-string')).toBeHidden();
+  await page.getByRole('button', { name: 'Expand all' }).click();
+  await expect(frame.locator('.json-string')).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
 test('Control Guidance view shows controls with their mapped KSIs/FRRs', async ({ page }) => {
   const errors = trackErrors(page);
   await ready(page);

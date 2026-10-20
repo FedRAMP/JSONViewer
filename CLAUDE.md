@@ -17,6 +17,10 @@ A second view (toolbar toggle **FedRAMP / Agency**) needs no opened file: it ren
 
 `config.js`, `schemaRefs.js`, `frmr.js`, `rv5.js`, `schemaPatch.js` and `scripts/sync-public.js` are copies of the editor's versions; keep them in step manually when either side changes. Intentional divergences: the viewer's `patchFRMRSchema` also patches `ksiId` with KSI titles (the editor keeps `ksiId` free-text), and the viewer-only `extractRuleForces`/`formatForceByClass` read each rule's `force` (directly, or per class under `varies_by_class`, collapsed like "A: SHOULD · B–D: MUST") for the force-of-rule badge in item summaries (`options.ruleForces`). The viewer's `scripts/sync-public.js` pulls FRMR from the `main` branch of `FedRAMP/rules` rather than a pinned commit, so each `bun run sync` picks up the latest rules (review the `public/` diff before committing). `extractRuleTexts` (built on the shared `ruleStatements`/`ruleForce` helpers in `frmr.js`) feeds `options.ruleTexts`, which adds a collapsible "FedRAMP Rule" section (statement(s), per class when they vary, plus any `following_information`) at the top of each matching item card in the FedRAMP view; it starts closed and opens with Expand all. `renderRuleText` in `htmlPreview.js` renders that text for both views. The Agency view doesn't pass `ruleTexts` to `buildItemCardIndex`, since its rule cards already show the text.
 
+### JSON view
+
+A third toolbar toggle, **JSON**, is enabled once a file has been opened. It renders the parsed document pretty-printed via `buildJsonHtml` (`src/utils/jsonView.js`, styles in `htmlPreview.css` under "Raw JSON view"). No schema is needed. Every non-empty object/array is a `<details>` whose closed summary shows `{…}` plus a key/item count. Everything starts open. Collapse all keeps only the root open.
+
 ## Deployment
 
 `.github/workflows/deploy-pages.yml` runs the unit tests, builds, and deploys `dist/` to GitHub Pages on every push to `master` (live at https://preview.fedramp.gov/JSONViewer/). The build's base path comes from `actions/configure-pages` (`VITE_BASE_URL`), so it follows the Pages URL; keep all runtime fetches relative. `dist/` is gitignored.
