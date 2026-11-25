@@ -335,3 +335,90 @@ describe('whitespace in string values', () => {
     expect(html).toContain('first<br>second');
   });
 });
+
+describe('additional fields', () => {
+  const schema = { properties: { name: { type: 'string', title: 'Name' } } };
+
+  it('renders top-level keys the schema does not declare in a final section', () => {
+    const data = {
+      $schema: 'https://example.com/s.json',
+      name: 'Declared',
+      fedRampId: 'FR123',
+      homepage: 'https://example.com',
+      evaluationMethod: { summary: 'Rubric' },
+      findings: [{ id: 'F-1', note: 'a' }, { id: 'F-2', severity: 'High' }],
+      empty: '',
+    };
+    const html = buildPreviewHtml(schema, data, { generatedAt: FIXED_DATE });
+    const extra = html.slice(html.indexOf('additional-fields'));
+    expect(html.indexOf('>Name<')).toBeLessThan(html.indexOf('additional-fields'));
+    expect(extra).toContain('<summary>Additional Fields</summary>');
+    expect(extra).toContain('<th>FedRAMP Id</th><td><span class="text-value">FR123</span>');
+    expect(extra).toContain('<a href="https://example.com" target="_blank" rel="noopener">');
+    expect(extra).toContain('<summary class="sub-label">Evaluation Method</summary>');
+    expect(extra).toContain('Rubric');
+    expect(extra).toContain('F-2');
+    expect(extra).toContain('High');
+    expect(extra).not.toContain('$schema');
+    expect(extra).not.toContain('Declared');
+    expect(extra).not.toContain('Empty');
+  });
+
+  it('omits the section when every key is declared', () => {
+    const html = buildPreviewHtml(schema, { $schema: 'x', name: 'A' }, { generatedAt: FIXED_DATE });
+    expect(html).not.toContain('Additional Fields');
+  });
+
+  it('follows collapsed', () => {
+    const html = buildPreviewHtml(schema, { extra: 'x' }, { generatedAt: FIXED_DATE, collapsed: true });
+    expect(html).toContain('<details class="top-section additional-fields"><summary>');
+  });
+
+  const nested = {
+    properties: {
+      period: { type: 'object', title: 'Period', properties: { from: { type: 'string' } } },
+      items: {
+        type: 'array',
+        items: { type: 'object', properties: { itemId: { type: 'string' }, note: { type: 'string' } } },
+      },
+    },
+  };
+
+  it('renders undeclared keys inside a declared object as an Additional Fields sub-section', () => {
+    const html = buildPreviewHtml(nested, { period: { from: 'Jan', timezone: 'UTC', $schema: 'x' } }, { generatedAt: FIXED_DATE });
+    expect(html).toContain('<th>From</th>');
+    expect(html).toMatch(/<details class="sub-section additional-fields" open><summary class="sub-label" title="[^"]+">Additional Fields<\/summary><div class="sub-body"><table class="info-table"><tbody><tr><th>Timezone<\/th><td><span class="text-value">UTC<\/span>/);
+    expect(html).not.toContain('$schema');
+    expect(html).not.toContain('top-section additional-fields');
+  });
+
+  it('renders undeclared keys on array items, only on the items that have them', () => {
+    const data = { items: [{ itemId: 'A-1', note: 'n' }, { itemId: 'A-2', fixedIn: { version: '2.0' } }] };
+    const html = buildPreviewHtml(nested, data, { generatedAt: FIXED_DATE });
+    expect(html.match(/sub-section additional-fields/g)).toHaveLength(1);
+    expect(html).toContain('<summary class="sub-label">Fixed In</summary>');
+    expect(html).toContain('2.0');
+  });
+
+  it('adds no sub-section when an object has only declared keys', () => {
+    const html = buildPreviewHtml(nested, { period: { from: 'Jan' } }, { generatedAt: FIXED_DATE });
+    expect(html).not.toContain('Additional Fields');
+  });
+});
+
+describe('generated labels', () => {
+  const labels = keys => {
+    const schema = { properties: Object.fromEntries(keys.map(k => [k, { type: 'string' }])) };
+    const html = buildPreviewHtml(schema, Object.fromEntries(keys.map(k => [k, 'x'])), { generatedAt: FIXED_DATE });
+    return [...html.matchAll(/<summary>([^<]*)<\/summary>/g)].map(m => m[1]);
+  };
+
+  it('always spells FedRAMP as one word', () => {
+    expect(labels(['fedRampId', 'fedramp_id', 'FedRAMPId', 'fed-ramp-package', 'notFedRampRelated']))
+      .toEqual(['FedRAMP Id', 'FedRAMP id', 'FedRAMP Id', 'FedRAMP package', 'Not FedRAMP Related']);
+  });
+
+  it('splits an acronym run from the next word', () => {
+    expect(labels(['cveIDList', 'httpURL'])).toEqual(['Cve ID List', 'Http URL']);
+  });
+});
