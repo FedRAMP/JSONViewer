@@ -221,6 +221,7 @@ details[open] > summary::before { transform: rotate(90deg); }
 .markdown-body pre code { background: none; padding: 0; }
 
 .empty-note { padding: 24px; text-align: center; color: #6b7280; font-style: italic; }
+.additional-note { margin: 0 0 10px; color: #6b7280; font-size: 0.85rem; font-style: italic; }
 
 @media print {
   body { background: #fff; }

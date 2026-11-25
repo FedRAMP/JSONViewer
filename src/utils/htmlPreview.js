@@ -19,10 +19,15 @@ function isEmptyValue(v) {
   return false;
 }
 
+// "fedRampId" -> "FedRAMP Id": camelCase/snake_case to words, splitting an
+// acronym run from the word after it ("RAMPId" -> "RAMP Id"), with FedRAMP
+// always spelled as one word.
 function humanize(key) {
   return key
     .replace(/[_-]+/g, ' ')
     .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
+    .replace(/\bfed\s*ramp\b/gi, 'FedRAMP')
     .replace(/^./, c => c.toUpperCase())
     .trim();
 }
@@ -129,6 +134,12 @@ function renderObjectBody(prop, value, root, depth, omitKeys = new Set()) {
       const html = renderField(child, childValue, root, key, depth + 1);
       if (html) subSections.push(`<details class="sub-section"${openAttr}><summary class="sub-label">${esc(labelFor(key, child))}</summary><div class="sub-body">${html}</div></details>`);
     }
+  }
+
+  const extra = undeclaredFields(prop.properties, value);
+  const extraBody = extra && renderObjectBody(inferSchema(extra), extra, root, depth + 1);
+  if (extraBody) {
+    subSections.push(`<details class="sub-section additional-fields"${openAttr}><summary class="sub-label" title="${esc(ADDITIONAL_NOTE)}">Additional Fields</summary><div class="sub-body">${extraBody}</div></details>`);
   }
 
   if (!rows.length && !subSections.length) return null;
@@ -346,8 +357,61 @@ export function buildPreviewHtml(schema, formData, options = {}) {
     return `<details class="top-section"${openAttr}><summary>${esc(labelFor(key, prop))}</summary><div class="top-section-body">${body}</div></details>`;
   }).join('');
 
-  const bodyHtml = sections || '<p class="empty-note">No data entered yet.</p>';
+  const bodyHtml = (sections + renderAdditionalFields(schema, formData))
+    || '<p class="empty-note">No data entered yet.</p>';
   return wrapPage(title, bodyHtml, generatedAt);
+}
+
+const URI_SHAPE = /^https?:\/\/\S+$/i;
+const DATE_TIME_SHAPE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:?\d{2})?$/;
+
+// A schema describing a value the document schema doesn't, so it can go
+// through the same renderers: objects keep their keys, arrays of objects get
+// the union of their items' keys, and strings shaped like a URL or ISO
+// date-time get that format.
+function inferSchema(value) {
+  if (Array.isArray(value)) {
+    const present = value.filter(v => !isEmptyValue(v));
+    const objects = present.filter(v => typeof v === 'object' && !Array.isArray(v));
+    if (objects.length && objects.length === present.length) {
+      const merged = Object.assign({}, ...objects.slice().reverse());
+      return { type: 'array', items: inferSchema(merged) };
+    }
+    return { type: 'array', items: present.length ? inferSchema(present[0]) : {} };
+  }
+  if (value !== null && typeof value === 'object') {
+    return { type: 'object', properties: Object.fromEntries(Object.entries(value).map(([k, v]) => [k, inferSchema(v)])) };
+  }
+  if (typeof value === 'boolean') return { type: 'boolean' };
+  if (typeof value === 'number') return { type: 'number' };
+  if (typeof value === 'string') {
+    if (URI_SHAPE.test(value)) return { type: 'string', format: 'uri' };
+    if (DATE_TIME_SHAPE.test(value)) return { type: 'string', format: 'date-time' };
+  }
+  return { type: 'string' };
+}
+
+const ADDITIONAL_NOTE = "Fields in this file that the selected document type's schema doesn't define.";
+
+// { key: value } for the non-empty keys of an object value that its schema
+// doesn't declare (other than $schema), or null if there are none. Rendered
+// via inferSchema so nothing in the file is silently dropped; inferred schemas
+// declare every key, so this never recurses into its own output.
+function undeclaredFields(declared = {}, value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+  const entries = Object.entries(value)
+    .filter(([key, v]) => key !== '$schema' && !(key in declared) && !isEmptyValue(v));
+  return entries.length ? Object.fromEntries(entries) : null;
+}
+
+// The document's own undeclared top-level keys, as a final top section.
+// (Nested ones get an "Additional Fields" sub-section in renderObjectBody.)
+function renderAdditionalFields(schema, formData) {
+  const extra = undeclaredFields(schema.properties, formData);
+  const body = extra && renderObjectBody(inferSchema(extra), extra, schema, 1);
+  if (!body) return '';
+  const note = `<p class="additional-note">${esc(ADDITIONAL_NOTE)}</p>`;
+  return `<details class="top-section additional-fields"${openAttr}><summary>Additional Fields</summary><div class="top-section-body">${note}${body}</div></details>`;
 }
 
 // { itemId: cardHtml } for every top-level array item in formData that's
