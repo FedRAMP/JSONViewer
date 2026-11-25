@@ -23,7 +23,7 @@ Switch to **JSON** (once a file is open) to see the file's raw JSON, pretty-prin
 ## How it works
 
 - On startup, every schema in `SCHEMA_CATALOG` is fetched (local `public/` copy first, falling back to GitHub raw), its cross-file `$ref`s into the common-definitions schema are inlined, and the requirement-ID / NIST-control-ID enums are patched from `public/fedramp-consolidated-rules.json` so IDs render alongside their human-readable titles.
-- `src/utils/detectSchema.js` scores each schema against the loaded data (matched keys, minus unknown keys, minus missing required keys) and picks the best.
+- `src/utils/detectSchema.js` uses the file's `$schema` pointer when it names a catalog schema; otherwise it scores each schema against the loaded data (keys it declares with a matching JSON type, minus unknown or wrongly typed keys, minus missing required keys) and picks the best.
 - `src/utils/htmlPreview.js`'s `buildPreviewHtml(schema, data)` walks the schema recursively and emits a standalone HTML page (collapsible sections, Markdown via `marked`, enum titles, formatted dates/links).
 - The result is shown in an `<iframe sandbox="">` — the empty sandbox blocks all scripting, since the content comes from an untrusted file.
 
